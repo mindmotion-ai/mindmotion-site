@@ -1,0 +1,6 @@
+# Insights launch gate — flipped together with INSIGHTS_ENABLED in src/config.ts.
+User-agent: *
+Disallow: /insights/
+Disallow: /meet
+
+Sitemap: https://mindmotion.ai/sitemap-index.xml
