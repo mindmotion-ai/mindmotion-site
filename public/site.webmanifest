@@ -1,0 +1,12 @@
+{
+  "name": "MindMotion",
+  "short_name": "MindMotion",
+  "icons": [
+    { "src": "/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "theme_color": "#0F2A44",
+  "background_color": "#FAFAFA",
+  "display": "browser",
+  "start_url": "/"
+}
