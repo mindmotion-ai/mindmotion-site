@@ -1,0 +1,22 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import ContactForm from '../components/ContactForm.astro';
+---
+
+<Base
+  title="Contact | MindMotion"
+  description="Get in touch with MindMotion."
+>
+  <Nav />
+  <main id="main" class="py-12 md:py-16 px-6">
+    <div class="max-w-[720px] mx-auto">
+      <h1 class="text-3xl md:text-4xl font-semibold mb-8 text-accent">
+        Contact
+      </h1>
+      <ContactForm />
+    </div>
+  </main>
+  <Footer />
+</Base>

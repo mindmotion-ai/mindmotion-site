@@ -1,0 +1,72 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Section from '../components/Section.astro';
+import Footer from '../components/Footer.astro';
+
+const effectiveDate = '2026-05-17';
+---
+
+<Base
+  title="Terms | MindMotion"
+  description="Terms of use for the MindMotion website."
+>
+  <Nav />
+  <main id="main">
+    <Section heading="Terms of use">
+      <p><strong>Effective date:</strong> {effectiveDate}</p>
+      <p>
+        These terms govern use of the MindMotion website operated by
+        MindMotion, Inc. By using the site you agree to these terms.
+      </p>
+    </Section>
+
+    <Section heading="Site purpose">
+      <p>
+        This site presents information about MindMotion, Inc. and its
+        products. Content is informational, may change without notice, and
+        does not constitute an offer or commitment.
+      </p>
+    </Section>
+
+    <Section heading="No warranty">
+      <p>
+        The site is provided "as is" without warranty of any kind. We make no
+        guarantees about accuracy, completeness, timeliness, or fitness for
+        any particular purpose.
+      </p>
+    </Section>
+
+    <Section heading="Intellectual property">
+      <p>
+        All content on this site &mdash; including text, logos, marks, and
+        images &mdash; is the property of MindMotion, Inc. or its licensors
+        and is protected by copyright and trademark law. Unauthorized use is
+        prohibited.
+      </p>
+    </Section>
+
+    <Section heading="Limitation of liability">
+      <p>
+        To the maximum extent permitted by law, MindMotion, Inc. is not liable
+        for any indirect, incidental, or consequential damages arising from
+        your use of this site.
+      </p>
+    </Section>
+
+    <Section heading="Governing law">
+      <p>
+        These terms are governed by the laws of the State of Delaware, United
+        States, without regard to its conflict-of-law principles.
+      </p>
+    </Section>
+
+    <Section heading="Contact">
+      <p>
+        Questions about these terms: use the
+        <a href="/contact">contact form</a>.
+      </p>
+    </Section>
+  </main>
+  <Footer />
+</Base>

@@ -27,9 +27,10 @@
   a {
     color: var(--color-link);
     text-decoration: none;
+    transition: color 0.15s ease;
   }
   a:hover {
-    text-decoration: underline;
+    color: var(--color-accent);
   }
   a:focus-visible {
     outline: 2px solid var(--color-link);

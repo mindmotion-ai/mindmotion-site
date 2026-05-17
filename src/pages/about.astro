@@ -1,0 +1,48 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Section from '../components/Section.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Base
+  title="About | MindMotion"
+  description="MindMotion builds runtime safety software for AI-driven robots."
+>
+  <Nav />
+  <main id="main">
+    <Section id="mission" heading="Mission">
+      <p>Make robots safe to deploy around people.</p>
+    </Section>
+
+    <Section id="approach" heading="Approach">
+      <p>
+        Capability and trust are different problems. Robots driven by AI become
+        more capable through better data, better models, more training. Trust
+        does not come from the same place. Trust is established by structure:
+        an independent layer that measures, records, and bounds what a robot
+        does, regardless of what its AI decides or how it evolves.
+      </p>
+      <p>We build that layer.</p>
+      <p>
+        Aviation, automotive, and computing each reached the point where
+        execution had to be separated from decision-making. Trust required a
+        layer distinct from the system being trusted. Robotics is at the same
+        point.
+      </p>
+    </Section>
+
+    <Section id="founder" heading="Founder">
+      <p>
+        MindMotion is led by David Braun. He has spent more than fifteen years
+        working on robot control, the field that makes robot motion
+        predictable and reliable. His research has produced methods for
+        controlling complex robots in the real world, including humanoid
+        systems he built and tested. He holds a Ph.D. in mechanical
+        engineering. His work has been recognized with the NSF CAREER Award
+        and the field's top award for research in robotics.
+      </p>
+    </Section>
+  </main>
+  <Footer />
+</Base>

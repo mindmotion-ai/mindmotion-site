@@ -1,0 +1,20 @@
+---
+const DESTINATION = 'https://calendar.app.google/REPLACE_WITH_REAL_LINK';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="refresh" content={`0; url=${DESTINATION}`} />
+    <link rel="canonical" href={DESTINATION} />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Redirecting…</title>
+    <script is:inline define:vars={{ DESTINATION }}>
+      window.location.replace(DESTINATION);
+    </script>
+  </head>
+  <body>
+    <p>Redirecting to <a href={DESTINATION}>{DESTINATION}</a>…</p>
+  </body>
+</html>

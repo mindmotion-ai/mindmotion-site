@@ -1,0 +1,159 @@
+---
+const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '';
+---
+
+<form id="contact-form" class="space-y-5" novalidate>
+  <input type="hidden" name="access_key" value={accessKey} />
+  <input
+    type="checkbox"
+    name="botcheck"
+    tabindex="-1"
+    autocomplete="off"
+    aria-hidden="true"
+    style="position:absolute;left:-9999px"
+  />
+
+  <div class="grid sm:grid-cols-2 gap-5">
+    <div>
+      <label for="first_name" class="block text-sm font-medium text-accent">First name</label>
+      <input
+        id="first_name"
+        type="text"
+        name="first_name"
+        required
+        autocomplete="given-name"
+        class="mt-2 w-full px-3 py-2 bg-white border border-accent/20 rounded focus:outline-none focus:border-accent transition-colors"
+      />
+    </div>
+    <div>
+      <label for="last_name" class="block text-sm font-medium text-accent">Last name</label>
+      <input
+        id="last_name"
+        type="text"
+        name="last_name"
+        required
+        autocomplete="family-name"
+        class="mt-2 w-full px-3 py-2 bg-white border border-accent/20 rounded focus:outline-none focus:border-accent transition-colors"
+      />
+    </div>
+  </div>
+
+  <div>
+    <label for="email" class="block text-sm font-medium text-accent">Work email</label>
+    <input
+      id="email"
+      type="email"
+      name="email"
+      required
+      autocomplete="email"
+      class="mt-2 w-full px-3 py-2 bg-white border border-accent/20 rounded focus:outline-none focus:border-accent transition-colors"
+    />
+  </div>
+
+  <div>
+    <label for="organization" class="block text-sm font-medium text-accent">Organization</label>
+    <input
+      id="organization"
+      type="text"
+      name="organization"
+      required
+      autocomplete="organization"
+      class="mt-2 w-full px-3 py-2 bg-white border border-accent/20 rounded focus:outline-none focus:border-accent transition-colors"
+    />
+  </div>
+
+  <div>
+    <label for="role" class="block text-sm font-medium text-accent">Role</label>
+    <input
+      id="role"
+      type="text"
+      name="role"
+      required
+      autocomplete="organization-title"
+      class="mt-2 w-full px-3 py-2 bg-white border border-accent/20 rounded focus:outline-none focus:border-accent transition-colors"
+    />
+  </div>
+
+  <div>
+    <label for="message" class="block text-sm font-medium text-accent">Message</label>
+    <textarea
+      id="message"
+      name="message"
+      required
+      rows="6"
+      class="mt-2 w-full px-3 py-2 bg-white border border-accent/20 rounded focus:outline-none focus:border-accent transition-colors resize-y"
+    ></textarea>
+  </div>
+
+  <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+    <button
+      type="submit"
+      class="px-6 py-2.5 bg-accent text-bg rounded font-medium hover:bg-accent-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+    >
+      Send
+    </button>
+    <p class="text-sm text-accent-2">
+      By submitting, you agree to our <a href="/privacy">Privacy Policy</a>.
+    </p>
+  </div>
+
+  <p
+    id="contact-error"
+    class="text-sm text-accent"
+    role="alert"
+    aria-live="polite"
+    hidden
+  >
+    Something went wrong. Please try again in a moment.
+  </p>
+</form>
+
+<div
+  id="contact-success"
+  class="text-lg text-accent"
+  role="status"
+  aria-live="polite"
+  hidden
+>
+  <p>Thank you. We have received your message and will respond shortly.</p>
+</div>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  const success = document.getElementById('contact-success');
+  const error = document.getElementById('contact-error');
+  const submitBtn = form?.querySelector('button[type="submit"]') as HTMLButtonElement | null;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!form || !success || !error || !submitBtn) return;
+
+    error.hidden = true;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+
+    const data = Object.fromEntries(new FormData(form));
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+      const json = await res.json();
+      if (res.ok && json.success) {
+        form.hidden = true;
+        success.hidden = false;
+      } else {
+        throw new Error(json.message || 'submission failed');
+      }
+    } catch (err) {
+      error.hidden = false;
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send';
+    }
+  });
+</script>

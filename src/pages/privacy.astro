@@ -1,0 +1,110 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Section from '../components/Section.astro';
+import Footer from '../components/Footer.astro';
+
+const effectiveDate = '2026-05-17';
+---
+
+<Base
+  title="Privacy | MindMotion"
+  description="How MindMotion handles information collected through this website."
+>
+  <Nav />
+  <main id="main">
+    <Section heading="Privacy policy">
+      <p><strong>Effective date:</strong> {effectiveDate}</p>
+      <p>
+        MindMotion, Inc. ("MindMotion", "we", "our") operates this website.
+        This policy describes what information the website collects, how it is
+        used, and the third parties involved in processing it.
+      </p>
+    </Section>
+
+    <Section heading="Information collected">
+      <p>
+        <strong>Cookieless analytics.</strong> The site uses Cloudflare Web
+        Analytics, which does not set tracking cookies and does not require
+        visitor consent under GDPR or CCPA. The service collects aggregate,
+        anonymous information about page visits.
+      </p>
+      <p>
+        <strong>Contact form submissions.</strong> When you submit the contact
+        form, we collect the information you provide: first name, last name,
+        work email, organization, role, and message.
+      </p>
+      <p>
+        <strong>Scheduling.</strong> If you book a meeting via a scheduling
+        link, the scheduling tool's host processes your booking information
+        (name, email, time slot). This applies only when a scheduling link
+        is in use.
+      </p>
+    </Section>
+
+    <Section heading="How information is used">
+      <p>
+        We use contact-form submissions to respond to your inquiry. We use
+        aggregate analytics to understand site usage. We do not sell your
+        information or share it with third parties for marketing.
+      </p>
+    </Section>
+
+    <Section heading="Third-party processors">
+      <p>The following services process information on our behalf:</p>
+      <p>
+        <strong>Cloudflare</strong> &mdash; web analytics. Cookieless and
+        anonymous in aggregate.
+      </p>
+      <p>
+        <strong>Web3Forms</strong> &mdash; receives contact-form submissions
+        and delivers them to our team's inbox.
+      </p>
+      <p>
+        <strong>Scheduling tool host</strong> &mdash; processes meeting
+        bookings when a scheduling link is in use.
+      </p>
+    </Section>
+
+    <Section heading="Cookies">
+      <p>
+        The site sets no first-party tracking cookies. Cloudflare Web
+        Analytics does not require cookies. No cookie banner is displayed
+        because no consent is required. If this changes (for example, if
+        third-party embeds that set cookies are added later) a banner will be
+        added at that time.
+      </p>
+    </Section>
+
+    <Section heading="Retention">
+      <p>
+        We retain contact-form submissions only as long as needed to respond
+        to your inquiry, typically no longer than twelve months.
+      </p>
+    </Section>
+
+    <Section heading="Your rights">
+      <p>
+        If you are in the EU, UK, or California, you may have rights to
+        access, correct, or delete information we hold about you. To make a
+        request, use the <a href="/contact">contact form</a>. We do not list a
+        public email address; the contact form is the canonical channel.
+      </p>
+    </Section>
+
+    <Section heading="Updates">
+      <p>
+        We may update this policy. The effective date above reflects the
+        latest revision.
+      </p>
+    </Section>
+
+    <Section heading="Contact">
+      <p>
+        Questions about this policy: use the
+        <a href="/contact">contact form</a>.
+      </p>
+    </Section>
+  </main>
+  <Footer />
+</Base>
