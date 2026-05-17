@@ -1,23 +1,66 @@
 ---
-import '../styles/global.css';
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import Footer from '../components/Footer.astro';
 import { SITE } from '../config.ts';
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <title>{SITE.title}</title>
-    <meta name="description" content={SITE.description} />
-  </head>
-  <body>
-    <main class="min-h-screen flex items-center justify-center px-8">
-      <div class="text-center">
-        <h1 class="text-4xl font-semibold mb-4">{SITE.name}</h1>
-        <p class="text-lg">Scaffold placeholder. Full homepage lands in Step 2.</p>
-      </div>
-    </main>
-  </body>
-</html>
+<Base title={SITE.title} description={SITE.description}>
+  <Nav />
+  <main id="main">
+    <Hero />
+
+    <Section id="problem" heading="The problem">
+      <p>
+        Humanoids, cobots, and autonomous systems increasingly use AI to
+        operate outside industrial robot cages and controlled factory
+        environments. These robots are increasingly driven by AI rather than
+        hand-coded logic.
+      </p>
+      <p>
+        As these robots take on continuously improving artificial brains, they
+        become more capable but less predictable in what they will do. Without
+        dependable ways to constrain what robots can do, risk is hard to
+        bound, deployment near people slows, and accountability is difficult
+        to establish. Addressing these problems requires a layer between the
+        AI's decisions and the robot's motion that measures, records, and
+        bounds what the robot does.
+      </p>
+    </Section>
+
+    <Section id="what-we-do" heading="What we do">
+      <p>
+        MindMotion is building runtime software for AI-driven robotics. Our
+        work draws on more than fifteen years of research and engineering in
+        robot control and a peer-reviewed methodological foundation in the
+        field.
+      </p>
+      <p>
+        MindMotion software operates at the interface between the brain and
+        the body, where decisions become motion. At that interface, the
+        software measures, records, and bounds what the robot does, regardless
+        of what the AI decides or how it evolves.
+      </p>
+    </Section>
+
+    <Section id="why-now" heading="Why now">
+      <p>
+        Robots are entering human environments faster than the methods to
+        govern them are maturing. The brains controlling those robots are
+        changing more frequently than the processes used to evaluate them.
+        New questions are emerging about how robot behavior should be governed
+        and who is accountable when something goes wrong.
+      </p>
+      <p>
+        Aviation, automotive, and computing each reached a moment when
+        execution had to be separated from decision-making. Robotics is at the
+        same moment.
+      </p>
+    </Section>
+
+    {/* Insights preview section wired in Step 4 once content collection exists. */}
+  </main>
+  <Footer />
+</Base>

@@ -1,0 +1,86 @@
+---
+import '@fontsource-variable/inter';
+import '../styles/global.css';
+import { SITE } from '../config.ts';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalPath?: string;
+  ogImage?: string;
+  type?: 'website' | 'article';
+}
+
+const {
+  title = SITE.title,
+  description = SITE.description,
+  canonicalPath = Astro.url.pathname,
+  ogImage = '/og-default.png',
+  type = 'website',
+} = Astro.props;
+
+const canonicalURL = new URL(canonicalPath, SITE.url).toString();
+const ogImageURL = new URL(ogImage, SITE.url).toString();
+
+const organizationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: SITE.name,
+  legalName: SITE.legalName,
+  url: SITE.url,
+  logo: new URL('/logo-mindmotion.svg', SITE.url).toString(),
+  sameAs: [`https://www.linkedin.com/company/${SITE.org}`],
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <meta property="og:type" content={type} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:site_name" content={SITE.name} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#0F2A44" />
+
+    {type === 'website' && (
+      <script
+        type="application/ld+json"
+        is:inline
+        set:html={JSON.stringify(organizationJsonLd)}
+      />
+    )}
+
+    <!-- REPLACE BEFORE LAUNCH: LinkedIn site verification token -->
+    <!-- <meta name="linkedin-site-verification" content="REPLACE_BEFORE_LAUNCH" /> -->
+
+    <!-- REPLACE BEFORE LAUNCH: Cloudflare Web Analytics token -->
+    <!-- <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "REPLACE_BEFORE_LAUNCH"}'></script> -->
+  </head>
+  <body>
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 bg-white px-3 py-2 rounded">
+      Skip to content
+    </a>
+    <slot />
+  </body>
+</html>

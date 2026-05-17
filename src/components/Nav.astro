@@ -1,0 +1,22 @@
+---
+import { SITE, INSIGHTS_ENABLED } from '../config.ts';
+---
+
+<header class="sticky top-0 z-40 bg-bg/80 backdrop-blur">
+  <nav
+    class="max-w-[1100px] mx-auto px-6 py-4 flex items-center justify-between"
+    aria-label="Primary"
+  >
+    <a href="/" class="flex items-center gap-3" aria-label={`${SITE.name} home`}>
+      <img src="/logo-mindmotion.svg" alt="" width="32" height="32" class="h-8 w-auto" />
+      <span class="font-semibold text-lg text-accent">{SITE.name}</span>
+    </a>
+    <ul class="flex items-center gap-6 text-sm">
+      <li><a href="/about" class="text-accent hover:text-link">About</a></li>
+      {INSIGHTS_ENABLED && (
+        <li><a href="/insights" class="text-accent hover:text-link">Insights</a></li>
+      )}
+      <li><a href="/contact" class="text-accent hover:text-link">Contact</a></li>
+    </ul>
+  </nav>
+</header>

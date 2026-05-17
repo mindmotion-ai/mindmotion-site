@@ -7,16 +7,14 @@
   --color-accent-2: #1F3D5C;
   --color-link: #3F7CAC;
 
-  --font-sans: "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", system-ui, sans-serif;
-
-  --container-prose: 650px;
-  --container-page: 1100px;
+  --font-sans: "Inter Variable", "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", system-ui, sans-serif;
 }
 
 @layer base {
   html {
     font-size: 17px;
     color-scheme: light;
+    scroll-behavior: smooth;
   }
   body {
     background: var(--color-bg);
@@ -28,7 +26,40 @@
   }
   a {
     color: var(--color-link);
+    text-decoration: none;
   }
+  a:hover {
+    text-decoration: underline;
+  }
+  a:focus-visible {
+    outline: 2px solid var(--color-link);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+  h1, h2, h3, h4 {
+    color: var(--color-accent);
+  }
+}
+
+@layer components {
+  .prose-block p {
+    margin-bottom: 1.25em;
+  }
+  .prose-block p:last-child {
+    margin-bottom: 0;
+  }
+  .prose-block strong {
+    font-weight: 600;
+  }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in-up {
+  animation: fadeInUp 600ms ease-out both;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -43,5 +74,34 @@
 }
 
 @media print {
-  /* Print stylesheet — populated in Step 2 with full rules. */
+  nav,
+  footer,
+  .no-print {
+    display: none !important;
+  }
+  body {
+    color: black !important;
+    background: white !important;
+    font-family: Georgia, "Times New Roman", serif;
+  }
+  a,
+  a:visited {
+    color: black;
+    text-decoration: underline;
+  }
+  a[href^="http"]:after,
+  a[href^="/"]:after {
+    content: " (" attr(href) ")";
+    font-size: 0.9em;
+    color: #555;
+  }
+  a[href^="#"]:after {
+    content: "";
+  }
+  h1, h2, h3 {
+    page-break-after: avoid;
+  }
+  p, blockquote {
+    page-break-inside: avoid;
+  }
 }
