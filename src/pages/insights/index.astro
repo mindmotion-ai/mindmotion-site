@@ -1,0 +1,55 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import Footer from '../../components/Footer.astro';
+import InsightCard from '../../components/InsightCard.astro';
+
+const allPosts = await getCollection('insights', ({ data }) =>
+  import.meta.env.PROD ? !data.draft : true
+);
+
+const sortedPosts = allPosts.sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime()
+);
+
+const readingTime = (text: string) => {
+  const words = (text ?? '').trim().split(/\s+/).filter(Boolean).length;
+  const minutes = Math.max(1, Math.round(words / 200));
+  return `${minutes} min read`;
+};
+---
+
+<Base
+  title="Insights | MindMotion"
+  description="Articles from MindMotion on runtime safety for AI-driven robots."
+>
+  <Nav />
+  <main id="main">
+    <PageHeader
+      title="Insights"
+      subtitle="Articles on runtime safety for AI-driven robots."
+      density="compact"
+    />
+
+    <section class="pb-14 md:pb-24 px-6">
+      <div class="max-w-[1080px] mx-auto">
+        {sortedPosts.length === 0 ? (
+          <p class="text-base text-accent-2">No posts yet.</p>
+        ) : (
+          sortedPosts.map((post) => (
+            <InsightCard
+              slug={post.id}
+              title={post.data.title}
+              description={post.data.description}
+              date={post.data.date}
+              readingTime={readingTime(post.body ?? '')}
+            />
+          ))
+        )}
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>
