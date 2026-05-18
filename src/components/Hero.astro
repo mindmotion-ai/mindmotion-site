@@ -6,7 +6,7 @@ import { SITE } from '../config.ts';
   class="hero min-h-[75vh] flex flex-col items-center justify-center px-6 relative overflow-hidden"
   aria-labelledby="hero-tagline"
 >
-  <div class="flex flex-col items-center text-center fade-in-up max-w-[1080px] relative z-10 -translate-y-[5vh]">
+  <div class="flex flex-col items-center text-center fade-in-up max-w-[1080px] relative z-10">
     <h1
       id="hero-tagline"
       class="text-4xl sm:text-5xl md:text-[96px] font-semibold text-accent leading-[1.18] tracking-tight"
@@ -21,19 +21,29 @@ import { SITE } from '../config.ts';
   <a
     href="#problem"
     aria-label="Scroll to the problem section"
-    class="absolute bottom-[6vh] text-accent/35 hover:text-accent transition-colors p-3 z-10 chevron-bounce"
+    class="absolute bottom-[3vh] text-accent hover:text-accent transition-colors p-3 z-10 chevron-bounce"
   >
     <svg
-      viewBox="0 0 24 24"
+      viewBox="0 0 160 30"
       fill="none"
-      stroke="currentColor"
-      stroke-width="2"
       stroke-linecap="round"
       stroke-linejoin="round"
       aria-hidden="true"
-      class="h-10 w-10"
+      class="w-[160px] h-auto"
     >
-      <polyline points="6 9 12 15 18 9"></polyline>
+      <defs>
+        <linearGradient id="chevronFade" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="currentColor" stop-opacity="0" />
+          <stop offset="35%" stop-color="currentColor" stop-opacity="0.4" />
+          <stop offset="65%" stop-color="currentColor" stop-opacity="0.4" />
+          <stop offset="100%" stop-color="currentColor" stop-opacity="0" />
+        </linearGradient>
+      </defs>
+      <polyline
+        points="6 4 80 22 154 4"
+        stroke="url(#chevronFade)"
+        stroke-width="2"
+      ></polyline>
     </svg>
   </a>
 </section>
@@ -50,7 +60,7 @@ import { SITE } from '../config.ts';
   }
   .hero-rule {
     width: 160px;
-    height: 1px;
+    height: 2px;
     background: linear-gradient(
       to right,
       transparent,

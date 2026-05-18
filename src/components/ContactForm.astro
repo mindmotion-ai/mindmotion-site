@@ -14,7 +14,7 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '';
   />
 
   <div>
-    <label for="name" class="block text-base font-medium text-accent mb-2">
+    <label for="name" class="block text-base text-accent mb-2">
       Name
     </label>
     <input
@@ -23,12 +23,16 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '';
       name="name"
       required
       autocomplete="name"
-      class="w-full px-4 py-3 bg-white border border-accent/20 rounded-md focus:outline-none focus:border-accent transition-colors text-base"
+      aria-describedby="name-error"
+      class="form-input w-full px-4 py-3 bg-white rounded-md focus:outline-none transition-shadow text-base"
     />
+    <p id="name-error" class="error-msg mt-2 text-base text-red-500" hidden>
+      Please enter your name.
+    </p>
   </div>
 
   <div>
-    <label for="email" class="block text-base font-medium text-accent mb-2">
+    <label for="email" class="block text-base text-accent mb-2">
       Email
     </label>
     <input
@@ -37,12 +41,16 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '';
       name="email"
       required
       autocomplete="email"
-      class="w-full px-4 py-3 bg-white border border-accent/20 rounded-md focus:outline-none focus:border-accent transition-colors text-base"
+      aria-describedby="email-error"
+      class="form-input w-full px-4 py-3 bg-white rounded-md focus:outline-none transition-shadow text-base"
     />
+    <p id="email-error" class="error-msg mt-2 text-base text-red-500" hidden>
+      Please enter your email.
+    </p>
   </div>
 
   <div>
-    <label for="organization" class="block text-base font-medium text-accent mb-2">
+    <label for="organization" class="block text-base text-accent mb-2">
       Organization
     </label>
     <input
@@ -51,12 +59,16 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '';
       name="organization"
       required
       autocomplete="organization"
-      class="w-full px-4 py-3 bg-white border border-accent/20 rounded-md focus:outline-none focus:border-accent transition-colors text-base"
+      aria-describedby="organization-error"
+      class="form-input w-full px-4 py-3 bg-white rounded-md focus:outline-none transition-shadow text-base"
     />
+    <p id="organization-error" class="error-msg mt-2 text-base text-red-500" hidden>
+      Please enter your organization.
+    </p>
   </div>
 
   <div>
-    <label for="message" class="block text-base font-medium text-accent mb-2">
+    <label for="message" class="block text-base text-accent mb-2">
       Message
     </label>
     <textarea
@@ -64,25 +76,29 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '';
       name="message"
       required
       rows="7"
-      class="w-full px-4 py-3 bg-white border border-accent/20 rounded-md focus:outline-none focus:border-accent transition-colors text-base resize-y"
+      aria-describedby="message-error"
+      class="form-input w-full px-4 py-3 bg-white rounded-md focus:outline-none transition-shadow text-base resize-y"
     ></textarea>
+    <p id="message-error" class="error-msg mt-2 text-base text-red-500" hidden>
+      Please enter a message.
+    </p>
   </div>
 
   <div class="flex flex-col items-start gap-3">
     <button
       type="submit"
-      class="px-7 py-3 bg-accent text-bg rounded-md font-medium hover:bg-accent-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+      class="px-7 py-3 bg-accent text-bg rounded-md font-medium text-base hover:bg-accent-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
     >
       Send
     </button>
-    <p class="text-sm text-accent-2">
+    <p class="text-base text-accent-2">
       By submitting, you agree to our <a href="/privacy">Privacy Policy</a>.
     </p>
   </div>
 
   <p
     id="contact-error"
-    class="text-sm text-accent"
+    class="text-base text-red-500"
     role="alert"
     aria-live="polite"
     hidden
@@ -93,25 +109,102 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '';
 
 <div
   id="contact-success"
-  class="text-lg text-accent"
   role="status"
   aria-live="polite"
   hidden
 >
-  <p>Thank you. We have received your message and will respond shortly.</p>
+  <div class="flex items-start gap-3">
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+      class="h-7 w-7 text-accent flex-shrink-0 mt-1"
+    >
+      <polyline points="5 12 10 17 19 8" />
+    </svg>
+    <p class="text-base text-accent">
+      Thank you. We have received your message and will respond shortly.
+    </p>
+  </div>
 </div>
+
+<style>
+  .form-input {
+    box-shadow: 0 4px 16px rgba(15, 42, 68, 0.12);
+    transition: box-shadow 180ms ease;
+  }
+  .form-input:focus {
+    box-shadow: 0 4px 16px rgba(15, 42, 68, 0.18), 0 0 0 4px rgba(15, 42, 68, 0.12);
+  }
+  .form-input.is-invalid {
+    box-shadow: 0 4px 16px rgba(220, 38, 38, 0.18);
+  }
+  .form-input.is-invalid:focus {
+    box-shadow: 0 4px 16px rgba(220, 38, 38, 0.22), 0 0 0 4px rgba(220, 38, 38, 0.18);
+  }
+</style>
 
 <script>
   const form = document.getElementById('contact-form') as HTMLFormElement | null;
   const success = document.getElementById('contact-success');
-  const error = document.getElementById('contact-error');
+  const submitError = document.getElementById('contact-error');
   const submitBtn = form?.querySelector('button[type="submit"]') as HTMLButtonElement | null;
+
+  const validateField = (input: HTMLInputElement | HTMLTextAreaElement): boolean => {
+    const isEmpty = !input.value.trim();
+    const isInvalidEmail =
+      input.type === 'email' &&
+      input.value.trim() !== '' &&
+      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim());
+    const isInvalid = isEmpty || isInvalidEmail;
+
+    input.setAttribute('aria-invalid', String(isInvalid));
+    input.classList.toggle('is-invalid', isInvalid);
+
+    const errorEl = document.getElementById(`${input.id}-error`);
+    if (errorEl) {
+      errorEl.hidden = !isInvalid;
+      if (isInvalidEmail) {
+        errorEl.textContent = 'Please enter a valid email address.';
+      }
+    }
+    return !isInvalid;
+  };
+
+  // Live validation: clear error when user starts typing (and re-validate on blur)
+  form?.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>(
+    '[required]'
+  ).forEach((input) => {
+    input.addEventListener('blur', () => validateField(input));
+    input.addEventListener('input', () => {
+      if (input.getAttribute('aria-invalid') === 'true' && input.value.trim()) {
+        validateField(input);
+      }
+    });
+  });
 
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
-    if (!form || !success || !error || !submitBtn) return;
+    if (!form || !success || !submitError || !submitBtn) return;
 
-    error.hidden = true;
+    submitError.hidden = true;
+
+    const fields = form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>(
+      '[required]'
+    );
+    let firstInvalid: HTMLInputElement | HTMLTextAreaElement | null = null;
+    fields.forEach((input) => {
+      if (!validateField(input) && !firstInvalid) firstInvalid = input;
+    });
+    if (firstInvalid) {
+      (firstInvalid as HTMLElement).focus();
+      return;
+    }
+
     submitBtn.disabled = true;
     submitBtn.textContent = 'Sending…';
 
@@ -134,7 +227,7 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '';
         throw new Error(json.message || 'submission failed');
       }
     } catch (err) {
-      error.hidden = false;
+      submitError.hidden = false;
       submitBtn.disabled = false;
       submitBtn.textContent = 'Send';
     }

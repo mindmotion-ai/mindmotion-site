@@ -3,21 +3,25 @@ interface Props {
   id?: string;
   heading?: string;
   variant?: 'default' | 'tinted';
+  density?: 'normal' | 'compact';
   class?: string;
 }
 const {
   id,
   heading,
   variant = 'default',
+  density = 'normal',
   class: classProp,
 } = Astro.props;
 
-const variantClass = variant === 'tinted' ? 'bg-accent/[0.025]' : '';
+const variantClass = variant === 'tinted' ? 'tinted-section' : '';
+const paddingClass =
+  density === 'compact' ? 'py-8 md:py-10' : 'py-14 md:py-24';
 ---
 
 <section
   id={id}
-  class={`py-10 md:py-14 px-6 ${variantClass} ${classProp ?? ''}`}
+  class={`${paddingClass} px-6 ${variantClass} ${classProp ?? ''}`}
 >
   <div class="max-w-[1080px] mx-auto">
     {heading && (
@@ -30,3 +34,15 @@ const variantClass = variant === 'tinted' ? 'bg-accent/[0.025]' : '';
     </div>
   </div>
 </section>
+
+<style>
+  .tinted-section {
+    background: linear-gradient(
+      to bottom,
+      rgba(15, 42, 68, 0) 0,
+      rgba(15, 42, 68, 0.03) 50px,
+      rgba(15, 42, 68, 0.03) calc(100% - 50px),
+      rgba(15, 42, 68, 0) 100%
+    );
+  }
+</style>

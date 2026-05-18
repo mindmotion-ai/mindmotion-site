@@ -12,7 +12,7 @@ import { SITE } from '../config.ts';
   <main id="main">
     <Hero />
 
-    <Section id="problem" heading="The problem">
+    <Section id="problem" heading="The problem" class="!pt-14 md:!pt-20">
       <p>
         Humanoids, cobots, and autonomous systems increasingly use AI to
         operate outside industrial robot cages and controlled factory
@@ -30,13 +30,38 @@ import { SITE } from '../config.ts';
       </p>
     </Section>
 
-    <Section id="what-we-do" heading="What we do" variant="tinted">
+    <Section id="what-we-do" heading="What we do" variant="tinted" class="!py-20 md:!py-32">
       <p>
         MindMotion is building runtime software for AI-driven robotics. Our
         work draws on more than fifteen years of research and engineering in
         robot control and a peer-reviewed methodological foundation in the
         field.
       </p>
+      <div class="my-6 md:my-8 flex justify-center">
+        <svg
+          role="img"
+          aria-label="Architecture: Brain feeds MindMotion which bounds the Robot"
+          viewBox="0 0 600 160"
+          class="w-full max-w-[720px] h-auto text-accent"
+        >
+          <title>Brain &rarr; MindMotion &rarr; Robot</title>
+
+          <rect x="10" y="45" width="120" height="70" rx="8" fill="none" stroke="currentColor" stroke-width="2" />
+          <text x="70" y="80" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="600" fill="currentColor">Brain</text>
+
+          <line x1="140" y1="80" x2="200" y2="80" stroke="currentColor" stroke-width="2" />
+          <polygon points="200,73 213,80 200,87" fill="currentColor" />
+
+          <rect x="220" y="45" width="170" height="70" rx="8" fill="none" stroke="currentColor" stroke-width="2" />
+          <text x="305" y="80" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="600" fill="currentColor">MindMotion</text>
+
+          <line x1="400" y1="80" x2="460" y2="80" stroke="currentColor" stroke-width="2" />
+          <polygon points="460,73 473,80 460,87" fill="currentColor" />
+
+          <rect x="480" y="45" width="120" height="70" rx="8" fill="none" stroke="currentColor" stroke-width="2" />
+          <text x="540" y="80" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="600" fill="currentColor">Robot</text>
+        </svg>
+      </div>
       <p>
         MindMotion software operates at the interface between the brain and
         the body, where decisions become motion. At that interface, the

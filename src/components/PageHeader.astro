@@ -2,11 +2,17 @@
 interface Props {
   title: string;
   subtitle?: string;
+  density?: 'normal' | 'compact';
 }
-const { title, subtitle } = Astro.props;
+const { title, subtitle, density = 'normal' } = Astro.props;
+
+const paddingClass =
+  density === 'compact'
+    ? 'pt-16 md:pt-24 pb-2 md:pb-4'
+    : 'pt-16 md:pt-24 pb-14 md:pb-24';
 ---
 
-<section class="pt-16 md:pt-24 pb-8 md:pb-12 px-6">
+<section class={`${paddingClass} px-6`}>
   <div class="max-w-[1080px] mx-auto">
     <h1 class="text-3xl md:text-4xl font-semibold text-accent leading-[1.1] tracking-tight">
       {title}
