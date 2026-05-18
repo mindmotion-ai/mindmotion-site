@@ -2,7 +2,7 @@
 const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '';
 ---
 
-<form id="contact-form" class="space-y-5" novalidate>
+<form id="contact-form" class="space-y-7" novalidate>
   <input type="hidden" name="access_key" value={accessKey} />
   <input
     type="checkbox"
@@ -13,82 +13,65 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '';
     style="position:absolute;left:-9999px"
   />
 
-  <div class="grid sm:grid-cols-2 gap-5">
-    <div>
-      <label for="first_name" class="block text-sm font-medium text-accent">First name</label>
-      <input
-        id="first_name"
-        type="text"
-        name="first_name"
-        required
-        autocomplete="given-name"
-        class="mt-2 w-full px-3 py-2 bg-white border border-accent/20 rounded focus:outline-none focus:border-accent transition-colors"
-      />
-    </div>
-    <div>
-      <label for="last_name" class="block text-sm font-medium text-accent">Last name</label>
-      <input
-        id="last_name"
-        type="text"
-        name="last_name"
-        required
-        autocomplete="family-name"
-        class="mt-2 w-full px-3 py-2 bg-white border border-accent/20 rounded focus:outline-none focus:border-accent transition-colors"
-      />
-    </div>
+  <div>
+    <label for="name" class="block text-base font-medium text-accent mb-2">
+      Name
+    </label>
+    <input
+      id="name"
+      type="text"
+      name="name"
+      required
+      autocomplete="name"
+      class="w-full px-4 py-3 bg-white border border-accent/20 rounded-md focus:outline-none focus:border-accent transition-colors text-base"
+    />
   </div>
 
   <div>
-    <label for="email" class="block text-sm font-medium text-accent">Work email</label>
+    <label for="email" class="block text-base font-medium text-accent mb-2">
+      Email
+    </label>
     <input
       id="email"
       type="email"
       name="email"
       required
       autocomplete="email"
-      class="mt-2 w-full px-3 py-2 bg-white border border-accent/20 rounded focus:outline-none focus:border-accent transition-colors"
+      class="w-full px-4 py-3 bg-white border border-accent/20 rounded-md focus:outline-none focus:border-accent transition-colors text-base"
     />
   </div>
 
   <div>
-    <label for="organization" class="block text-sm font-medium text-accent">Organization</label>
+    <label for="organization" class="block text-base font-medium text-accent mb-2">
+      Organization
+    </label>
     <input
       id="organization"
       type="text"
       name="organization"
       required
       autocomplete="organization"
-      class="mt-2 w-full px-3 py-2 bg-white border border-accent/20 rounded focus:outline-none focus:border-accent transition-colors"
+      class="w-full px-4 py-3 bg-white border border-accent/20 rounded-md focus:outline-none focus:border-accent transition-colors text-base"
     />
   </div>
 
   <div>
-    <label for="role" class="block text-sm font-medium text-accent">Role</label>
-    <input
-      id="role"
-      type="text"
-      name="role"
-      required
-      autocomplete="organization-title"
-      class="mt-2 w-full px-3 py-2 bg-white border border-accent/20 rounded focus:outline-none focus:border-accent transition-colors"
-    />
-  </div>
-
-  <div>
-    <label for="message" class="block text-sm font-medium text-accent">Message</label>
+    <label for="message" class="block text-base font-medium text-accent mb-2">
+      Message
+    </label>
     <textarea
       id="message"
       name="message"
       required
-      rows="6"
-      class="mt-2 w-full px-3 py-2 bg-white border border-accent/20 rounded focus:outline-none focus:border-accent transition-colors resize-y"
+      rows="7"
+      class="w-full px-4 py-3 bg-white border border-accent/20 rounded-md focus:outline-none focus:border-accent transition-colors text-base resize-y"
     ></textarea>
   </div>
 
-  <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+  <div class="flex flex-col items-start gap-3">
     <button
       type="submit"
-      class="px-6 py-2.5 bg-accent text-bg rounded font-medium hover:bg-accent-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+      class="px-7 py-3 bg-accent text-bg rounded-md font-medium hover:bg-accent-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
     >
       Send
     </button>

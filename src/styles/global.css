@@ -12,9 +12,15 @@
 
 @layer base {
   html {
-    font-size: 17px;
+    font-size: 18px;
     color-scheme: light;
     scroll-behavior: smooth;
+    scroll-padding-top: 180px;
+  }
+  @media (min-width: 768px) {
+    html {
+      font-size: 27px;
+    }
   }
   body {
     background: var(--color-bg);
@@ -61,6 +67,15 @@
 
 .fade-in-up {
   animation: fadeInUp 600ms ease-out both;
+}
+
+@keyframes chevronBounce {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(8px); }
+}
+
+.chevron-bounce {
+  animation: chevronBounce 2.4s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
