@@ -3,10 +3,10 @@ export const SITE = {
   name: 'MindMotion',
   legalName: 'MindMotion, Inc.',
   org: 'mindmotion-ai',
-  title: 'MindMotion | Runtime safety software for AI-driven robots',
+  title: 'MindMotion | Runtime safety for AI-driven robots',
   description:
     'Software for safe robot deployment around people. MindMotion builds runtime safety software for AI-driven robots.',
-  tagline: 'Safe robot deployment around people',
+  tagline: 'Software for safe robot deployment around people',
 } as const;
 
 // Insights publishing gate. While false: nav/footer omit the link, homepage preview
