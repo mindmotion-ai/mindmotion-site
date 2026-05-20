@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+#
+# pre-commit hook
+#
+# When src/pages/privacy.astro or src/pages/terms.astro is staged for commit,
+# auto-bump the effectiveDate in the file to today's date (US format,
+# "Month D, YYYY") and re-stage the file. Then print a reminder to update
+# the CHANGELOG-LEGAL.md in the mindmotion-site-source repository.
+#
+# The bump assumes any commit touching these documents is a material change.
+# For a truly cosmetic-only change (typo fix, whitespace), bypass with:
+#   git commit --no-verify
+#
+# To activate this hook, run once per clone:
+#   git config core.hooksPath .githooks
+
+set -euo pipefail
+
+STAGED_LEGAL=$(git diff --cached --name-only | grep -E '^src/pages/(privacy|terms)\.astro$' || true)
+
+if [ -z "$STAGED_LEGAL" ]; then
+    exit 0
+fi
+
+TODAY=$(date +"%B %-d, %Y")
+
+for file in $STAGED_LEGAL; do
+    CURRENT=$(grep -E "^const effectiveDate = '" "$file" | head -1 | sed -E "s/.*= '(.+)';.*/\1/")
+    if [ "$CURRENT" = "$TODAY" ]; then
+        continue
+    fi
+    echo "pre-commit: bumping effectiveDate in $file"
+    echo "            '$CURRENT' -> '$TODAY'"
+    sed -i.bak -E "s/(const effectiveDate = ')[^']+(';)/\1$TODAY\2/" "$file"
+    rm -f "${file}.bak"
+    git add "$file"
+done
+
+cat <<'EOF'
+
+------------------------------------------------------------
+  REMINDER: legal document change detected.
+  Add an entry to:
+      ../mindmotion-site-source/CHANGELOG-LEGAL.md
+  before pushing this commit. Capture what changed and why,
+  newest first, with the commit hash for traceability.
+------------------------------------------------------------
+
+EOF
