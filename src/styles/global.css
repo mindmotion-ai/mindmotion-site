@@ -69,6 +69,24 @@
   animation: fadeInUp 600ms ease-out both;
 }
 
+.reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 600ms ease-out, transform 600ms ease-out;
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 @keyframes chevronBounce {
   0%, 100% { transform: translateY(0); }
   50%      { transform: translateY(8px); }
