@@ -2,7 +2,7 @@
 
 @theme {
   --color-bg: #FAFAFA;
-  --color-text: #1A1A1A;
+  --color-text: #333333;
   --color-accent: #0F2A44;
   --color-accent-2: #1F3D5C;
   --color-link: #3F7CAC;
@@ -35,7 +35,7 @@
     background: var(--color-bg);
     color: var(--color-text);
     font-family: var(--font-sans);
-    line-height: 1.6;
+    line-height: 1.7;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
