@@ -17,3 +17,9 @@ export const INSIGHTS_ENABLED = false;
 
 export const HOMEPAGE_CONTACT_ENABLED = false;
 export const CONTACT_PAGE_ENABLED = true;
+
+// Vanity redirect destination. /meet redirects here.
+// Update this when the underlying Google Calendar booking URL changes
+// (or when switching scheduler tools entirely). Visitors and external
+// links continue to use mindmotion.ai/meet, which stays stable.
+export const MEET_URL = 'https://calendar.app.google/REPLACE_WITH_REAL_LINK';
