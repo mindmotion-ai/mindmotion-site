@@ -83,6 +83,7 @@ const organizationJsonLd = {
     <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 bg-white px-3 py-2 rounded">
       Skip to content
     </a>
+    <div class="scroll-progress" aria-hidden="true"></div>
     <slot />
     <script is:inline>
       if ('IntersectionObserver' in window) {
@@ -98,6 +99,24 @@ const organizationJsonLd = {
       } else {
         document.querySelectorAll('.reveal').forEach((el) => el.classList.add('is-visible'));
       }
+
+      (function () {
+        const bar = document.querySelector('.scroll-progress');
+        if (!bar) return;
+        let ticking = false;
+        function update() {
+          const scrollTop = window.scrollY;
+          const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+          const progress = scrollHeight > 0 ? Math.min(scrollTop / scrollHeight, 1) : 0;
+          bar.style.transform = 'scaleX(' + progress + ')';
+          ticking = false;
+        }
+        window.addEventListener('scroll', () => {
+          if (!ticking) { requestAnimationFrame(update); ticking = true; }
+        }, { passive: true });
+        window.addEventListener('resize', update, { passive: true });
+        update();
+      })();
     </script>
   </body>
 </html>
