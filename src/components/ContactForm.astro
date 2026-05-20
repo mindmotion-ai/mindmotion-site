@@ -221,6 +221,7 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '';
       });
       const json = await res.json();
       if (res.ok && json.success) {
+        document.dispatchEvent(new CustomEvent('mindmotion:contact-success'));
         form.hidden = true;
         success.hidden = false;
       } else {
