@@ -5,7 +5,7 @@ import PageHeader from '../components/PageHeader.astro';
 import Section from '../components/Section.astro';
 import Footer from '../components/Footer.astro';
 
-const effectiveDate = 'May 19, 2026';
+const effectiveDate = 'May 24, 2026';
 ---
 
 <Base
@@ -24,12 +24,12 @@ const effectiveDate = 'May 19, 2026';
       <p><strong>Effective:</strong> {effectiveDate}</p>
       <p>
         This Privacy Policy describes how MindMotion, Inc. ("MindMotion,"
-        "we," "us," or "our") collects, uses, and protects information
-        when you visit https://mindmotion.ai (the "Site"). MindMotion,
-        Inc. is a Delaware corporation with its principal place of
-        business in the United States, and is the controller of personal
-        data processed through the Site under the EU and UK General Data
-        Protection Regulation ("GDPR" and "UK GDPR").
+        "we," "us," or "our") collects, uses, discloses, and protects
+        information when you visit https://mindmotion.ai (the "Site").
+        MindMotion, Inc. is a Delaware corporation with its principal
+        place of business in the United States and is the controller of
+        personal data processed through the Site under the EU and UK
+        General Data Protection Regulation ("GDPR" and "UK GDPR").
       </p>
     </Section>
 
@@ -37,16 +37,20 @@ const effectiveDate = 'May 19, 2026';
       <p>
         <strong>Information you provide.</strong> If you submit our
         contact form, we collect your name, email address, organization,
-        and the contents of your message. If you book a meeting through
-        a scheduling link, the scheduling service receives your name,
-        email address, and selected time slot.
+        and the contents of your message. Please do not submit
+        confidential, proprietary, sensitive, regulated, or trade-secret
+        information through the contact form. If you book a meeting
+        with us through a scheduling link shared in correspondence, the
+        scheduling service receives information needed to process the
+        booking, such as your name, email address, and selected time
+        slot.
       </p>
       <p>
         <strong>Information collected automatically.</strong> Our
         hosting provider receives standard request information when you
         visit the Site, including IP address, browser type, referring
-        page, and timestamps, used for technical delivery and security.
-        The Site does not currently use analytics and does not set
+        page, and timestamps, for technical delivery and security. The
+        Site does not currently use analytics and does not set
         first-party cookies.
       </p>
     </Section>
@@ -82,12 +86,16 @@ const effectiveDate = 'May 19, 2026';
           the Site through GitHub Pages.
         </li>
         <li>
-          <strong>Web3Forms</strong> receives contact-form submissions
-          and forwards them to our inbox.
+          <strong>Formspree, Inc.</strong> (United States) receives,
+          processes, and stores contact-form submissions in our
+          Formspree account and sends email notifications to our Google
+          Workspace inbox. Formspree acts as a data processor under
+          Standard Contractual Clauses and is SOC 2 Type 2 audited.
         </li>
         <li>
           <strong>Google LLC</strong> provides our business email
-          (Google Workspace) and meeting scheduling (Google Calendar).
+          through Google Workspace and meeting scheduling through Google
+          Calendar.
         </li>
       </ul>
     </Section>
@@ -96,7 +104,7 @@ const effectiveDate = 'May 19, 2026';
       <p>
         We and our providers are located in the United States. If you
         access the Site from outside the United States, your information
-        will be transferred to and processed in the United States. For
+        may be transferred to and processed in the United States. For
         transfers of personal data from the European Economic Area, the
         United Kingdom, or Switzerland, we rely on appropriate
         safeguards, including the European Commission's Standard
@@ -109,9 +117,12 @@ const effectiveDate = 'May 19, 2026';
       <p>
         We retain contact-form submissions and meeting-related
         information no longer than twelve months from the date of last
-        contact, unless a longer period is required to comply with law
-        or to resolve disputes. Server log data is retained per our
-        hosting provider's standard retention policy.
+        contact, unless a longer period is required to comply with law,
+        resolve disputes, enforce agreements, or maintain appropriate
+        business records. We do not control or directly access GitHub
+        Pages server logs. GitHub logs and retains certain request
+        information, including visitor IP addresses, for security
+        purposes under its own privacy practices.
       </p>
     </Section>
 
@@ -120,11 +131,13 @@ const effectiveDate = 'May 19, 2026';
         We maintain reasonable technical and organizational measures
         designed to protect information against unauthorized access,
         alteration, disclosure, or destruction, including transport
-        encryption (HTTPS) and least-privilege access controls. No
-        Internet transmission is fully secure, however, and we cannot
-        guarantee absolute security. In the event of a personal data
-        breach affecting your information, we will notify you and the
-        relevant supervisory authority where required by applicable law.
+        encryption (HTTPS) and least-privilege access controls. These
+        measures are appropriate to the nature of the Site and the
+        limited information we collect. No Internet transmission is
+        fully secure, however, and we cannot guarantee absolute
+        security. In the event of a personal data breach affecting your
+        information, we will notify you and the relevant supervisory
+        authority where required by applicable law.
       </p>
     </Section>
 
@@ -159,33 +172,17 @@ const effectiveDate = 'May 19, 2026';
         lodge a complaint with your local supervisory authority.
       </p>
       <p>
-        <strong>California.</strong> Subject to the California Consumer
-        Privacy Act, as amended by the California Privacy Rights Act
-        ("CCPA/CPRA"), California residents have the right to know what
-        personal information we collect, to request deletion or
-        correction, and not to be discriminated against for exercising
-        these rights. In the preceding twelve months, we have
-        "collected" only the categories of identifiers and customer
-        records described above, and we have "disclosed" those
-        categories solely to the service providers listed above for
-        operational purposes. We do not collect or process sensitive
-        personal information as defined under the CCPA/CPRA. Under
-        California's "Shine the Light" law (Cal. Civ. Code 1798.83),
-        California residents may also request information about our
-        disclosure of personal information to third parties for those
-        third parties' own direct marketing purposes; we do not make
-        such disclosures.
-      </p>
-      <p>
-        <strong>Other US states.</strong> Residents of states with
-        comprehensive consumer privacy laws (including Virginia,
-        Colorado, Connecticut, Utah, Texas, Oregon, Montana, Iowa,
-        Tennessee, Indiana, Delaware, and New Jersey, among others)
-        have rights substantially similar to the California rights
-        described above, including the right to access, correct, and
-        delete personal information, and to opt out of targeted
-        advertising, sale of personal information, and certain
-        profiling. We do not engage in those opt-out activities.
+        <strong>California and other US states.</strong> Residents of
+        California and other US states with comprehensive consumer
+        privacy laws may have rights, subject to applicable law, to
+        request access to, correction of, or deletion of personal
+        information, and to opt out of certain processing activities.
+        We do not sell personal information, share personal information
+        for cross-context behavioral advertising, process personal
+        information for targeted advertising, or use personal
+        information for profiling that produces legal or similarly
+        significant effects. We do not collect or process sensitive
+        personal information as defined under the CCPA/CPRA.
       </p>
       <p>
         <strong>Exercising your rights.</strong> Submit requests through
@@ -209,26 +206,28 @@ const effectiveDate = 'May 19, 2026';
 
     <Section density="compact" heading="Children's Privacy">
       <p>
-        The Site is not directed to children under 16, and we do not
-        knowingly collect personal information from children. If we
-        learn that we have collected information from a child, we will
-        delete it promptly.
+        The Site is not directed to minors under 18, and we do not
+        knowingly collect personal information from minors. If we
+        learn that we have collected personal information from a minor,
+        we will delete it promptly.
       </p>
     </Section>
 
-    <Section density="compact" heading="Data Protection Officer">
+    <Section density="compact" heading="Privacy Contact">
       <p>
-        Our Data Protection Officer can be contacted through our
-        <a href="/contact">contact form</a>, with "DPO" noted in the
-        message.
+        For privacy-related inquiries, including inquiries that would
+        typically be directed to a Data Protection Officer, please
+        contact us through our <a href="/contact">contact form</a> with
+        "Privacy" noted in the message.
       </p>
     </Section>
 
     <Section density="compact" heading="Changes to This Policy">
       <p>
-        We may update this Policy from time to time. Material changes
-        will be reflected by an updated effective date at the top of
-        this page and, where required by law, by additional notice.
+        We may update this Policy from time to time. When we do, we will
+        update the effective date at the top of this page. Where
+        applicable law requires additional notice of changes, we will
+        provide it.
       </p>
     </Section>
 
