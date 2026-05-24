@@ -18,10 +18,15 @@ export const INSIGHTS_ENABLED = false;
 export const HOMEPAGE_CONTACT_ENABLED = false;
 export const CONTACT_PAGE_ENABLED = true;
 
-// Vanity redirect destination. /meet redirects here.
-// Update this when the underlying Google Calendar booking URL changes
-// (or when switching scheduler tools entirely). Visitors and external
-// links continue to use mindmotion.ai/meet, which stays stable.
+// Public vanity URL where MindMotion's booking page lives. Stable across
+// scheduler changes. Use this constant anywhere on the Site (or in
+// external communication) that needs to link to the booking page.
+export const MEET_PUBLIC_URL = `${SITE.url}/meet`;
+
+// Underlying scheduler URL that /meet redirects to. Update this when
+// the underlying Google Calendar booking URL changes or when switching
+// scheduler tools entirely. Visitors and external links continue to
+// use MEET_PUBLIC_URL, which stays stable.
 export const MEET_URL = 'https://calendar.app.google/8Vjtfws4QqJhLiEt6';
 
 // Contact form endpoint. The Formspree form ID is in the URL.
