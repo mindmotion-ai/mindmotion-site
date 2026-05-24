@@ -22,4 +22,17 @@ export const CONTACT_PAGE_ENABLED = true;
 // Update this when the underlying Google Calendar booking URL changes
 // (or when switching scheduler tools entirely). Visitors and external
 // links continue to use mindmotion.ai/meet, which stays stable.
-export const MEET_URL = 'https://calendar.app.google/REPLACE_WITH_REAL_LINK';
+export const MEET_URL = 'https://calendar.app.google/8Vjtfws4QqJhLiEt6';
+
+// Contact form endpoint. The Formspree form ID is in the URL.
+// Update this if the form provider or form ID changes. The contact form
+// notification recipient (the inbox that receives submissions) is
+// configured in the Formspree dashboard, not in code.
+export const CONTACT_FORM_ENDPOINT = 'https://formspree.io/f/mdajldzo';
+
+// Canonical contact email for MindMotion. Not surfaced anywhere on the
+// public Site (we route all public contact through /contact). Kept here
+// as the single source of truth in case any code path needs to render
+// or reference it (e.g., an mailto fallback if the form provider is
+// unavailable). Update here, not in scattered strings.
+export const CONTACT_EMAIL = 'contact@mindmotion.ai';
