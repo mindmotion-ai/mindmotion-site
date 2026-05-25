@@ -26,8 +26,15 @@ const headingClass =
     : 'text-2xl md:text-3xl font-semibold mb-4 md:mb-6 text-accent leading-tight tracking-tight';
 
 const variantClass = variant === 'tinted' ? 'tinted-section' : '';
-const paddingClass =
-  density === 'compact' ? 'py-8 md:py-10' : 'py-10 md:py-16';
+const paddingClass = (() => {
+  // Page-title sections (h1) get larger top padding to match PageHeader compact,
+  // so titles start at the same vertical position across all pages.
+  if (headingLevel === 1) {
+    if (density === 'compact') return 'pt-16 md:pt-24 pb-8 md:pb-10';
+    return 'pt-16 md:pt-24 pb-10 md:pb-16';
+  }
+  return density === 'compact' ? 'py-8 md:py-10' : 'py-10 md:py-16';
+})();
 ---
 
 <section
