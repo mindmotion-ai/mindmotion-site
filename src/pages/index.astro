@@ -12,31 +12,29 @@ import { SITE } from '../config.ts';
   <main id="main">
     <Hero />
 
-    <Section id="problem" heading="The problem" class="!pt-14 md:!pt-20">
+    <Section id="problem" heading="The problem">
       <p>
         Humanoids, cobots, and autonomous robots are moving out of industrial
         cages and into shared spaces around people. Their behavior is
-        increasingly driven by AI decision-making, rather than by hand-coded
-        logic.
+        increasingly driven by AI, rather than by hand-coded logic.
       </p>
       <p>
         As these robots take on continuously improving artificial brains, they
-        become more capable but less predictable in what they will do. Without
-        dependable ways to constrain what robots can do, risk is hard to
-        bound, deployment near people slows, and accountability is difficult
-        to establish. Addressing these problems requires a layer between the
-        AI's decisions and the robot's motion that measures, records, and
-        bounds what the robot does.
+        become more capable but less predictable in what they do. Without ways
+        to constrain what robots can do, risk is hard to bound, accountability
+        is difficult to establish, and deployment of AI-driven robots around
+        people slows. Addressing this problem requires a layer between the
+        AI's decisions and the robot's motion.
       </p>
     </Section>
 
-    <Section id="what-we-do" heading="What we do" variant="tinted" class="!py-20 md:!py-32">
+    <Section id="what-we-do" heading="What we do" variant="tinted">
       <p>
-        We are building runtime safety software for AI-driven robots.
-        MindMotion&rsquo;s software operates at the interface between the brain
-        and the body, where decisions become motion. At that interface, the
-        software measures, records, and bounds what the robot does, regardless
-        of what the AI decides or how it evolves.
+        We are building runtime safety software for AI-driven robots. The
+        software is the execution boundary between the brain and the body,
+        where decisions become motion. At that boundary, the software
+        measures, records, and bounds what the robot does, regardless of
+        what the AI decides or how it evolves.
       </p>
       <div class="my-6 md:my-8 flex justify-center">
         <svg
@@ -67,16 +65,14 @@ import { SITE } from '../config.ts';
 
     <Section id="why-now" heading="Why now">
       <p>
-        Robots are entering human environments faster than the methods to
-        govern them are maturing. The brains controlling those robots are
-        changing more frequently than the processes used to evaluate them.
-        New questions are emerging about how robot behavior should be governed
-        and who is accountable when something goes wrong.
+        AI-driven robots are challenging to deploy safely around people at
+        scale. Safety at scale requires an execution boundary that separates
+        decision-making from execution.
       </p>
       <p>
         Aviation, automotive, and computing each reached a moment when
-        execution had to be separated from decision-making. Robotics is at the
-        same moment.
+        execution had to be separated from decision-making. Robotics is at
+        the same moment.
       </p>
     </Section>
 
