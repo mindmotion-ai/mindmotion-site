@@ -1,47 +1,20 @@
 ---
-import Base from '../layouts/Base.astro';
-import Nav from '../components/Nav.astro';
-import PageHeader from '../components/PageHeader.astro';
-import Section from '../components/Section.astro';
-import Footer from '../components/Footer.astro';
+const DESTINATION = '/about';
 ---
 
-<Base
-  title="Mission | MindMotion"
-  description="MindMotion builds runtime safety software for AI-driven robots."
->
-  <Nav />
-  <main id="main">
-    <PageHeader title="Make robots safe to deploy around people" density="compact" />
-
-    <Section id="approach" heading="Approach" variant="tinted" class="!py-20 md:!py-32">
-      <p>
-        Capability and trust are different problems. Robots driven by AI become
-        more capable through better data, better models, more training. Trust
-        does not come from the same place. Trust is established by structure:
-        an independent layer that measures, records, and bounds what a robot
-        does, regardless of what its AI decides or how it evolves.
-      </p>
-      <p>We build that layer.</p>
-      <p>
-        Aviation, automotive, and computing each reached the point where
-        execution had to be separated from decision-making. Trust required a
-        layer distinct from the system being trusted. Robotics is at the same
-        point.
-      </p>
-    </Section>
-
-    <Section id="founder" heading="Founder">
-      <p>
-        MindMotion is led by David Braun. He has spent more than fifteen years
-        working on robot control, the field that makes robot motion
-        predictable and reliable. His research has produced methods for
-        controlling complex robots in the real world, including humanoid
-        systems he built and tested. He holds a Ph.D. in mechanical
-        engineering. His work has been recognized with the NSF CAREER Award
-        and the field's top award for research in robotics.
-      </p>
-    </Section>
-  </main>
-  <Footer />
-</Base>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="refresh" content={`0; url=${DESTINATION}`} />
+    <link rel="canonical" href={DESTINATION} />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Redirecting…</title>
+    <script is:inline define:vars={{ DESTINATION }}>
+      window.location.replace(DESTINATION);
+    </script>
+  </head>
+  <body>
+    <p>Redirecting to <a href={DESTINATION}>{DESTINATION}</a>…</p>
+  </body>
+</html>
