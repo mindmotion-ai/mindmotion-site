@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
+import Section from '../components/Section.astro';
 import Footer from '../components/Footer.astro';
 import ContactForm from '../components/ContactForm.astro';
 ---
@@ -11,39 +12,33 @@ import ContactForm from '../components/ContactForm.astro';
 >
   <Nav />
   <main id="main">
-    <section id="contact-default-heading" class="reveal pt-16 md:pt-24 pb-8 md:pb-12 px-6">
-      <div class="max-w-[1080px] mx-auto">
-        <h1 class="text-3xl md:text-4xl font-semibold text-accent leading-[1.1] tracking-tight">
-          Contact
-        </h1>
-      </div>
-    </section>
-
-    <section id="contact-form-section" class="reveal pb-14 md:pb-24 px-6">
-      <div class="max-w-[1080px] mx-auto">
+    <Section
+      id="contact-form-section"
+      heading="Contact"
+      headingLevel={1}
+    >
+      <div class="mt-8 md:mt-12">
         <ContactForm />
       </div>
-    </section>
+    </Section>
 
-    <section id="contact-thanks-section" class="reveal pt-16 md:pt-24 pb-14 md:pb-24 px-6" hidden>
-      <div class="max-w-[1080px] mx-auto">
-        <h1 class="text-3xl md:text-4xl font-semibold text-accent leading-[1.1] tracking-tight">
-          Thank you
-        </h1>
-        <p class="mt-4 md:mt-5 text-base sm:text-lg md:text-xl text-accent-2 leading-snug">
-          We have received your message and will respond shortly.
-        </p>
-      </div>
-    </section>
+    <Section
+      id="contact-thanks-section"
+      heading="Thank you"
+      headingLevel={1}
+      hidden
+    >
+      <p class="text-base sm:text-lg md:text-xl text-accent-2 leading-snug">
+        We have received your message and will respond shortly.
+      </p>
+    </Section>
   </main>
 
   <script is:inline>
     document.addEventListener('mindmotion:contact-success', () => {
-      const heading = document.getElementById('contact-default-heading');
-      const form = document.getElementById('contact-form-section');
+      const formSection = document.getElementById('contact-form-section');
       const thanks = document.getElementById('contact-thanks-section');
-      if (heading) heading.hidden = true;
-      if (form) form.hidden = true;
+      if (formSection) formSection.hidden = true;
       if (thanks) {
         thanks.hidden = false;
         requestAnimationFrame(() => thanks.classList.add('is-visible'));
