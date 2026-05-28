@@ -13,7 +13,7 @@ export const SITE = {
 // section is not rendered, /insights/* are excluded from the sitemap, and robots.txt
 // disallows /insights/. Flip to true once ≥3 publishable posts exist and a cadence
 // is committed. See spec §9.2 and operations manual §6.
-export const INSIGHTS_ENABLED = false;
+export const INSIGHTS_ENABLED = true;
 
 export const HOMEPAGE_CONTACT_ENABLED = false;
 export const CONTACT_PAGE_ENABLED = true;
