@@ -3,7 +3,7 @@ import { SITE, INSIGHTS_ENABLED } from '../config.ts';
 ---
 
 <header class="sticky top-0 z-40 bg-bg/85 backdrop-blur">
-  <nav class="px-6 py-5" aria-label="Primary">
+  <nav class="px-5 sm:px-6 py-5" aria-label="Primary">
     <div class="max-w-[1080px] mx-auto flex items-center justify-between">
       <a
         href="/"
@@ -21,13 +21,129 @@ import { SITE, INSIGHTS_ENABLED } from '../config.ts';
           {SITE.name}
         </span>
       </a>
-      <ul class="flex items-center gap-6 text-base">
+
+      <ul class="hidden sm:flex items-center gap-6 text-base">
         <li><a href="/mission/" class="text-accent hover:text-link">Mission</a></li>
         {INSIGHTS_ENABLED && (
           <li><a href="/insights/" class="text-accent hover:text-link">Insights</a></li>
         )}
         <li><a href="/contact/" class="text-accent hover:text-link">Contact</a></li>
       </ul>
+
+      <button
+        type="button"
+        id="mobile-menu-toggle"
+        class="sm:hidden -mr-2 p-2 text-accent"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <svg
+          width="28"
+          height="28"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          aria-hidden="true"
+        >
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+      </button>
     </div>
   </nav>
 </header>
+
+<!--
+  The mobile menu overlay is a sibling of the header (not a child) so that its
+  `position: fixed` is relative to the viewport. If it were nested inside the
+  header, the header's `backdrop-filter` (from backdrop-blur) would establish
+  a new containing block and the overlay would only cover the header strip.
+-->
+<div
+  id="mobile-menu"
+  class="sm:hidden fixed inset-0 z-50 bg-bg flex flex-col"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Site menu"
+  hidden
+>
+  <div class="px-5 sm:px-6 py-5">
+    <div class="max-w-[1080px] mx-auto flex items-center justify-between">
+      <a
+        href="/"
+        class="flex items-center gap-3"
+        aria-label={`${SITE.name} home`}
+      >
+        <img
+          src="/logo-mindmotion.svg"
+          alt=""
+          width="48"
+          height="48"
+          class="h-12 w-auto"
+        />
+        <span class="font-semibold text-xl text-accent">{SITE.name}</span>
+      </a>
+      <button
+        type="button"
+        id="mobile-menu-close"
+        class="-mr-2 p-2 text-accent"
+        aria-label="Close menu"
+      >
+        <svg
+          width="28"
+          height="28"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          aria-hidden="true"
+        >
+          <line x1="6" y1="6" x2="18" y2="18" />
+          <line x1="6" y1="18" x2="18" y2="6" />
+        </svg>
+      </button>
+    </div>
+  </div>
+  <ul class="px-5 sm:px-6 mt-8 flex flex-col gap-2 max-w-[1080px] mx-auto w-full">
+    <li><a href="/mission/" class="block py-3 text-xl font-semibold text-accent hover:text-link">Mission</a></li>
+    {INSIGHTS_ENABLED && (
+      <li><a href="/insights/" class="block py-3 text-xl font-semibold text-accent hover:text-link">Insights</a></li>
+    )}
+    <li><a href="/contact/" class="block py-3 text-xl font-semibold text-accent hover:text-link">Contact</a></li>
+  </ul>
+</div>
+
+<script is:inline>
+  (function () {
+    const toggle = document.getElementById('mobile-menu-toggle');
+    const closeBtn = document.getElementById('mobile-menu-close');
+    const menu = document.getElementById('mobile-menu');
+    if (!toggle || !closeBtn || !menu) return;
+
+    function open() {
+      menu.hidden = false;
+      toggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+      closeBtn.focus();
+    }
+    function close() {
+      menu.hidden = true;
+      toggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      toggle.focus();
+    }
+    toggle.addEventListener('click', open);
+    closeBtn.addEventListener('click', close);
+    menu.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () { close(); });
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !menu.hidden) close();
+    });
+  })();
+</script>
