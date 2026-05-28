@@ -1,4 +1,13 @@
 ---
+/**
+ * Section is the workhorse for content sections (default headingLevel=2).
+ *
+ * `headingLevel={1}` mode turns Section into a page-top element. Use it
+ * only when the page top has content immediately attached or is stateful
+ * (toggled by id via JS): /mission's tagline, /contact's form/thank-you
+ * swap. For purely descriptive page headers (title + descriptive subtitle,
+ * nothing else attached), use PageHeader instead.
+ */
 interface Props {
   id?: string;
   heading?: string;

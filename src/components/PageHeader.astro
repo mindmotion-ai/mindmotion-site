@@ -1,4 +1,14 @@
 ---
+/**
+ * Use PageHeader for the top of a page whose role is purely descriptive:
+ * a title with an optional one-line subtitle that labels what the page is.
+ * Examples on this site: /privacy, /terms, /insights.
+ *
+ * Do NOT use PageHeader when the page-top element has content immediately
+ * attached (Mission's tagline as content) or is stateful and toggled by id
+ * via JS (Contact's form / thank-you swap). Those cases use Section with
+ * `headingLevel={1}` so the heading and its content share one element.
+ */
 interface Props {
   title: string;
   subtitle?: string;
