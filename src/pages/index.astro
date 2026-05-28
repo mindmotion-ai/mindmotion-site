@@ -28,7 +28,7 @@ import { SITE } from '../config.ts';
       </p>
     </Section>
 
-    <Section id="what-we-do" heading="What we do" variant="tinted">
+    <Section id="what-we-do" heading="What we do" variant="tinted" class="!pb-8 md:!pb-12">
       <p>
         We are building runtime safety software for AI-driven robots. The
         software is the execution boundary between the brain and the body,
@@ -36,30 +36,16 @@ import { SITE } from '../config.ts';
         measures, records, and bounds what the robot does, regardless of
         what the AI decides or how it evolves.
       </p>
-      <div class="my-6 md:my-8 flex justify-center">
-        <svg
-          role="img"
-          aria-label="Architecture: Decision feeds MindMotion's Software which controls Motion"
-          viewBox="0 0 600 160"
-          class="w-full max-w-[720px] h-auto text-accent"
-        >
-          <title>Decision &rarr; MindMotion&rsquo;s Software &rarr; Motion</title>
-
-          <rect x="20" y="45" width="120" height="70" rx="8" fill="none" stroke="currentColor" stroke-width="2" />
-          <text x="80" y="80" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="600" fill="currentColor">DECISION</text>
-
-          <line x1="145" y1="80" x2="200" y2="80" stroke="currentColor" stroke-width="2" />
-          <polygon points="200,73 213,80 200,87" fill="currentColor" />
-
-          <rect x="220" y="45" width="220" height="70" rx="8" fill="none" stroke="currentColor" stroke-width="2" />
-          <text x="330" y="80" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="600" fill="currentColor">MindMotion&rsquo;s Software</text>
-
-          <line x1="445" y1="80" x2="500" y2="80" stroke="currentColor" stroke-width="2" />
-          <polygon points="500,73 513,80 500,87" fill="currentColor" />
-
-          <rect x="520" y="45" width="70" height="70" rx="8" fill="none" stroke="currentColor" stroke-width="2" />
-          <text x="555" y="80" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="600" fill="currentColor">MOTION</text>
-        </svg>
+      <div class="mt-6 md:mt-8 mb-0">
+        <img
+          src="/execution-boundary.png"
+          alt="The AI's decision flows through MindMotion's execution boundary and emerges as motion at the robot"
+          width="1920"
+          height="1080"
+          loading="lazy"
+          decoding="async"
+          class="w-full h-auto"
+        />
       </div>
     </Section>
 
