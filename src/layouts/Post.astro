@@ -34,21 +34,49 @@ const articleJsonLd = {
   headline: title,
   description,
   datePublished: date.toISOString(),
+  dateModified: date.toISOString(),
   author: { '@type': 'Organization', name: author },
   publisher: {
     '@type': 'Organization',
     name: SITE.name,
     logo: {
       '@type': 'ImageObject',
-      url: new URL('/logo-mindmotion.svg', SITE.url).toString(),
+      url: new URL('/android-chrome-512x512.png', SITE.url).toString(),
+      width: 512,
+      height: 512,
     },
   },
   mainEntityOfPage: new URL(`/insights/${slug}/`, SITE.url).toString(),
 };
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: SITE.url,
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Insights',
+      item: new URL('/insights/', SITE.url).toString(),
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: title,
+      item: new URL(`/insights/${slug}/`, SITE.url).toString(),
+    },
+  ],
+};
 ---
 
 <Base
-  title={`${title} | ${SITE.name}`}
+  title={`${title} | ${SITE.legalName}`}
   description={description}
   canonicalPath={`/insights/${slug}/`}
   ogImage={image ?? '/og-default.png'}
@@ -58,12 +86,15 @@ const articleJsonLd = {
   <main id="main">
     <article class="pt-16 md:pt-24 pb-14 md:pb-24 px-6">
       <div class="max-w-[1080px] mx-auto">
-        <h1 class="text-3xl md:text-[40px] font-semibold text-accent leading-[1.15] tracking-tight">
+        <h1 class="text-4xl sm:text-5xl md:text-[56px] font-semibold text-accent leading-[1.1] tracking-tight">
           {title}
         </h1>
-        <p class="mt-4 text-base text-accent/50">
+        <p class="mt-4 text-base text-accent/70">
           <span>{formattedDate}</span>
           <span> &middot; {readingTime}</span>
+        </p>
+        <p class="mt-6 md:mt-8 text-base">
+          {description}
         </p>
         {image && (
           <img
@@ -77,7 +108,7 @@ const articleJsonLd = {
           <slot />
         </div>
         <p class="mt-12">
-          <a href="/insights" class="text-link">&larr; Back to Insights</a>
+          <a href="/insights/" class="text-accent font-semibold hover:text-link">&larr; Back to Insights</a>
         </p>
       </div>
     </article>
@@ -85,6 +116,11 @@ const articleJsonLd = {
       type="application/ld+json"
       is:inline
       set:html={JSON.stringify(articleJsonLd)}
+    />
+    <script
+      type="application/ld+json"
+      is:inline
+      set:html={JSON.stringify(breadcrumbJsonLd)}
     />
   </main>
   <Footer />
@@ -118,8 +154,11 @@ const articleJsonLd = {
     font-weight: 600;
   }
   .post-body :global(a) {
+    color: var(--color-accent);
+    font-weight: 600;
+  }
+  .post-body :global(a):hover {
     color: var(--color-link);
-    text-decoration: underline;
   }
   .post-body :global(blockquote) {
     border-left: 3px solid var(--color-accent);
