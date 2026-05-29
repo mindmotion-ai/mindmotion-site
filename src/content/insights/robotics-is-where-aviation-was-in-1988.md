@@ -1,26 +1,12 @@
 ---
 title: "Robotics is where aviation was in 1988"
-seoTitle: "Robotics is where aviation was in 1988 | MindMotion, Inc."
-slug: "robotics-is-where-aviation-was-in-1988"
-excerpt: "Aviation, automotive, and computing each reached the moment when execution had to be separated from decision-making. AI-driven robotics is at the same moment now."
 description: "Aviation, automotive, and computing each reached the moment when execution had to be separated from decision-making. Robotics is there now."
-keywords:
-  - AI safety precedent
-  - fly-by-wire envelope protection
-  - electronic stability control safety
-  - robot safety standards
-  - runtime safety for robotics
-  - AI-driven robots
-  - separation of decision and execution
 date: 2026-05-20
 draft: false
-readingTime: "6 min"
-wordCount: 1288
 tags:
   - why-now
   - precedent
   - safety
-section: "why-now"
 ---
 
 In 1988, Airbus certified the A320 with a new approach to flight control.

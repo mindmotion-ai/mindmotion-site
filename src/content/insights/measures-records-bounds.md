@@ -1,26 +1,12 @@
 ---
 title: "Measures, records, bounds"
-seoTitle: "Measures, records, bounds | MindMotion, Inc."
-slug: "measures-records-bounds"
-excerpt: "The three structural functions of runtime safety software for AI-driven robots, and what makes them work when the AI is updated or replaced."
 description: "The three structural functions of runtime safety software for AI-driven robots, and what makes them work when the AI is updated or replaced."
-keywords:
-  - runtime safety
-  - AI-driven robots
-  - robot safety software
-  - execution boundary
-  - safety envelope
-  - robot audit log
-  - physical AI safety
 date: 2026-05-20
 draft: false
-readingTime: "5 min"
-wordCount: 1042
 tags:
   - what-we-do
   - architecture
   - safety
-section: "what-we-do"
 ---
 
 Runtime safety software for AI-driven robots operates at the interface between the AI and the robot, where decisions become motion.

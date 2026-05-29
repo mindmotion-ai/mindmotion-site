@@ -1,26 +1,12 @@
 ---
 title: "More capable, less predictable"
-seoTitle: "More capable, less predictable | MindMotion, Inc."
-slug: "more-capable-less-predictable"
-excerpt: "The capability and the unpredictability of AI-driven robots come from the same place, which is why safety inside the AI is not enough and a layer outside it is necessary."
 description: "Why the capability and the unpredictability of AI-driven robots come from the same place, and why safety inside the AI is not enough."
-keywords:
-  - AI safety robotics
-  - AI-driven robots
-  - runtime safety
-  - robot safety architecture
-  - physical AI deployment
-  - unpredictable AI
-  - safety around people
 date: 2026-05-20
 draft: false
-readingTime: "3 min"
-wordCount: 759
 tags:
   - the-problem
   - safety
   - physical-ai
-section: "the-problem"
 ---
 
 Robots driven by AI are more capable than hand-coded robots have ever been. They are also less predictable in what they will do.
