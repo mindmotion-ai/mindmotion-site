@@ -1,6 +1,6 @@
 export const SITE = {
   url: 'https://mindmotion.ai',
-  name: 'MindMotion',
+  name: 'MindMotion, Inc.',
   legalName: 'MindMotion, Inc.',
   org: 'mindmotion-ai',
   title: 'MindMotion, Inc. | Runtime safety for AI-driven robots',
