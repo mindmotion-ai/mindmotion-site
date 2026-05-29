@@ -49,7 +49,7 @@ const paddingClass = (() => {
 <section
   id={id}
   hidden={hidden}
-  class={`reveal ${paddingClass} px-6 ${variantClass} ${classProp ?? ''}`}
+  class={`reveal ${paddingClass} px-5 sm:px-6 ${variantClass} ${classProp ?? ''}`}
 >
   <div class="max-w-[1080px] mx-auto">
     {heading && (
@@ -63,34 +63,6 @@ const paddingClass = (() => {
   </div>
 </section>
 
-<style>
-  .tinted-section {
-    position: relative;
-    background: rgba(15, 42, 68, 0.03);
-  }
-  .tinted-section::before,
-  .tinted-section::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 50px;
-    pointer-events: none;
-  }
-  .tinted-section::before {
-    top: -50px;
-    background: linear-gradient(
-      to bottom,
-      rgba(15, 42, 68, 0) 0,
-      rgba(15, 42, 68, 0.03) 100%
-    );
-  }
-  .tinted-section::after {
-    bottom: -50px;
-    background: linear-gradient(
-      to bottom,
-      rgba(15, 42, 68, 0.03) 0,
-      rgba(15, 42, 68, 0) 100%
-    );
-  }
-</style>
+<!-- .tinted-section styles now live in src/styles/global.css so any component
+     (Section, InsightCard, etc.) gets identical tint + gradient treatment. -->
+
