@@ -1,43 +1,44 @@
-# Astro Starter Kit: Minimal
+# mindmotion-site
+
+The [mindmotion.ai](https://mindmotion.ai) marketing website. Built with
+[Astro](https://astro.build), [Tailwind CSS](https://tailwindcss.com), and
+deployed to GitHub Pages.
+
+## Develop
 
 ```sh
-npm create astro@latest -- --template minimal
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Runs at <http://localhost:4321>.
 
-## 🚀 Project Structure
+## Build
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```sh
+npm run build      # writes the static site to dist/
+npm run preview    # serves dist/ at localhost:4321 for verification
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Deploy
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Pushes to `main` trigger
+[`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), which
+builds the site with the
+[`withastro/action`](https://github.com/withastro/action) workflow and
+publishes to GitHub Pages.
 
-Any static assets, like images, can be placed in the `public/` directory.
+## Repository conventions
 
-## 🧞 Commands
+- Commits that touch [`src/pages/privacy.astro`](src/pages/privacy.astro)
+  or [`src/pages/terms.astro`](src/pages/terms.astro) auto-bump the
+  `effectiveDate` to today via a pre-commit hook at
+  [`.githooks/pre-commit`](.githooks/pre-commit). For cosmetic-only
+  changes (typos, whitespace) bypass with `git commit --no-verify`.
+- Source-of-truth content (post drafts, brand artwork, compliance
+  evidence) lives in a separate private `mindmotion-site-source`
+  repository. Only the deploy-ready artefacts are committed here.
 
-All commands are run from the root of the project, from a terminal:
+## License
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Proprietary. See [LICENSE.md](LICENSE.md).
