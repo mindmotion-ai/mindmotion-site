@@ -1,4 +1,10 @@
 ---
+/**
+ * Renders an insights-listing entry as semantic content only.
+ * Spacing, max-width, tinted-or-not background, and gradient transitions are
+ * provided by the surrounding <Section> wrapper on the insights index page,
+ * exactly the same way the homepage and Mission page lay out their sections.
+ */
 interface Props {
   slug: string;
   title: string;
@@ -14,7 +20,7 @@ const formattedDate = new Intl.DateTimeFormat('en-US', {
 }).format(date);
 ---
 
-<article class="border-b border-accent/10 last:border-b-0 py-8 md:py-10">
+<article>
   <h2 class="text-2xl md:text-3xl font-semibold leading-tight tracking-tight">
     <a
       href={`/insights/${slug}/`}

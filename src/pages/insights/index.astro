@@ -4,6 +4,7 @@ import Base from '../../layouts/Base.astro';
 import Nav from '../../components/Nav.astro';
 import PageHeader from '../../components/PageHeader.astro';
 import Footer from '../../components/Footer.astro';
+import Section from '../../components/Section.astro';
 import InsightCard from '../../components/InsightCard.astro';
 import { SITE } from '../../config.ts';
 
@@ -52,23 +53,26 @@ const breadcrumbJsonLd = {
       density="compact"
     />
 
-    <section class="pb-14 md:pb-24 px-6">
-      <div class="max-w-[1080px] mx-auto">
-        {sortedPosts.length === 0 ? (
-          <p class="text-base text-accent-2">No posts yet.</p>
-        ) : (
-          sortedPosts.map((post) => (
-            <InsightCard
-              slug={post.id}
-              title={post.data.title}
-              description={post.data.description}
-              date={post.data.date}
-              readingTime={readingTime(post.body ?? '')}
-            />
-          ))
-        )}
-      </div>
-    </section>
+    {sortedPosts.length === 0 ? (
+      <Section density="compact">
+        <p class="text-base text-accent-2">No posts yet.</p>
+      </Section>
+    ) : (
+      sortedPosts.map((post, i) => (
+        <Section
+          variant={i % 2 === 1 ? 'tinted' : 'default'}
+          class={i === 0 ? '!pt-12 md:!pt-16' : ''}
+        >
+          <InsightCard
+            slug={post.id}
+            title={post.data.title}
+            description={post.data.description}
+            date={post.data.date}
+            readingTime={readingTime(post.body ?? '')}
+          />
+        </Section>
+      ))
+    )}
     <script
       type="application/ld+json"
       is:inline
