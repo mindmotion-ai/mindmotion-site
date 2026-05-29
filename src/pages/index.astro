@@ -37,15 +37,25 @@ import { SITE } from '../config.ts';
         what the AI decides or how it evolves.
       </p>
       <div class="-mx-5 sm:mx-0 mt-6 md:mt-8 mb-0">
-        <img
-          src="/execution-boundary.png"
-          alt="The AI's decision flows through MindMotion's execution boundary and emerges as motion at the robot"
-          width="1920"
-          height="1080"
-          loading="lazy"
-          decoding="async"
-          class="w-full h-auto"
-        />
+        <picture>
+          <!-- 4:5 portrait, brand-accent strokes on transparent bg, for phones. -->
+          <source
+            media="(max-width: 639px)"
+            srcset="/execution-boundary-mobile.png"
+            width="1200"
+            height="1500"
+          />
+          <!-- Default: 16:9 landscape, sized for tablet + desktop. -->
+          <img
+            src="/execution-boundary.png"
+            alt="The AI's decision flows through MindMotion's execution boundary and emerges as motion at the robot"
+            width="1920"
+            height="1080"
+            loading="lazy"
+            decoding="async"
+            class="w-full h-auto"
+          />
+        </picture>
       </div>
     </Section>
 
