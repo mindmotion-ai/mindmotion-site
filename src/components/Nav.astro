@@ -22,7 +22,7 @@ import { SITE, INSIGHTS_ENABLED } from '../config.ts';
         </span>
       </a>
 
-      <ul class="hidden sm:flex items-center gap-6 text-base">
+      <ul class="hidden lg:flex items-center gap-6 text-base">
         <li><a href="/mission/" class="text-accent hover:text-link">Mission</a></li>
         {INSIGHTS_ENABLED && (
           <li><a href="/insights/" class="text-accent hover:text-link">Insights</a></li>
@@ -33,14 +33,13 @@ import { SITE, INSIGHTS_ENABLED } from '../config.ts';
       <button
         type="button"
         id="mobile-menu-toggle"
-        class="sm:hidden -mr-2 p-2 text-accent"
+        class="lg:hidden -mr-2 p-2 text-accent"
         aria-label="Open menu"
         aria-expanded="false"
         aria-controls="mobile-menu"
       >
         <svg
-          width="28"
-          height="28"
+          class="w-7 h-7"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -65,7 +64,7 @@ import { SITE, INSIGHTS_ENABLED } from '../config.ts';
 -->
 <div
   id="mobile-menu"
-  class="sm:hidden fixed inset-0 z-50 bg-bg flex flex-col"
+  class="lg:hidden fixed inset-0 z-50 bg-bg flex flex-col"
   role="dialog"
   aria-modal="true"
   aria-label="Site menu"
@@ -94,8 +93,7 @@ import { SITE, INSIGHTS_ENABLED } from '../config.ts';
         aria-label="Close menu"
       >
         <svg
-          width="28"
-          height="28"
+          class="w-7 h-7"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -109,13 +107,20 @@ import { SITE, INSIGHTS_ENABLED } from '../config.ts';
       </button>
     </div>
   </div>
-  <ul class="px-5 sm:px-6 mt-8 flex flex-col gap-2 max-w-[1080px] mx-auto w-full">
-    <li><a href="/mission/" class="block py-3 text-xl font-semibold text-accent hover:text-link">Mission</a></li>
-    {INSIGHTS_ENABLED && (
-      <li><a href="/insights/" class="block py-3 text-xl font-semibold text-accent hover:text-link">Insights</a></li>
-    )}
-    <li><a href="/contact/" class="block py-3 text-xl font-semibold text-accent hover:text-link">Contact</a></li>
-  </ul>
+  <div class="px-5 sm:px-6 mt-8">
+    <div class="max-w-[1080px] mx-auto flex gap-3">
+      <!-- Invisible spacer matching the logo footprint so menu items align
+           horizontally with the "MindMotion" wordmark in the header above. -->
+      <div class="h-12 w-12 shrink-0" aria-hidden="true"></div>
+      <ul class="flex flex-col gap-2 flex-1">
+        <li><a href="/mission/" class="block py-3 text-xl font-semibold text-accent hover:text-link">Mission</a></li>
+        {INSIGHTS_ENABLED && (
+          <li><a href="/insights/" class="block py-3 text-xl font-semibold text-accent hover:text-link">Insights</a></li>
+        )}
+        <li><a href="/contact/" class="block py-3 text-xl font-semibold text-accent hover:text-link">Contact</a></li>
+      </ul>
+    </div>
+  </div>
 </div>
 
 <script is:inline>
