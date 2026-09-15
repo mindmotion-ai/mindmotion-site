@@ -46,6 +46,16 @@ export const ASSETS = {
   },
 } as const;
 
+// Colours used outside CSS: the browser toolbar colour (<meta name=
+// "theme-color">) and the web app manifest, neither of which can read CSS
+// variables. The brand colours themselves are defined in
+// src/styles/global.css; these must equal --color-accent and --color-bg
+// there. astro.config.mjs stops the build if they differ.
+export const BROWSER_COLORS = {
+  theme: '#0F2A44',
+  background: '#FAFAFA',
+} as const;
+
 // Browser-tab and search-result title for every page other than the
 // homepage (which uses SITE.title). Change the format here, not per page.
 export const pageTitle = (page: string) => `${page} | ${SITE.legalName}`;
