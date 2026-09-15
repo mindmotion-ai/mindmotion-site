@@ -67,7 +67,7 @@ In the ordinary case the software modifies the decision so the resulting motion 
 
 Where a decision cannot be modified into an acceptable motion, the software rejects it before any motion is produced and requests a new decision. Stopping the robot and returning it to a safe state is the last resort, used when neither of the first two is available.
 
-In all cases, the robot's motion is held inside a region the company deploying the robot has declared acceptable, regardless of what the AI decides.
+All three serve one purpose: keeping the robot's motion inside the region the company deploying the robot has declared acceptable, regardless of what the AI decides.
 
 The envelope is a separate object from the AI's goal. The AI is free to pursue any goal inside the envelope. The envelope is what makes pursuit of that goal safe.
 
