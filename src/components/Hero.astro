@@ -11,10 +11,14 @@ import { SITE } from '../config.ts';
       id="hero-tagline"
       class="text-4xl sm:text-5xl md:text-[96px] font-semibold text-accent leading-[1.4] tracking-tight"
     >
-      Safe robot deployment<br />around people
+      {SITE.tagline.map((phrase, i) => (
+        <Fragment>{i > 0 && <br />}{phrase}</Fragment>
+      ))}
     </h1>
     <p class="text-lg sm:text-xl md:text-[36px] text-accent-2 mt-6 md:mt-8 leading-snug">
-      Runtime safety software for&nbsp;AI&#8209;driven&nbsp;robots
+      {SITE.taglineSecondary.map((phrase, i) => (
+        <Fragment>{i > 0 && ' '}<span class="whitespace-nowrap">{phrase}</span></Fragment>
+      ))}
     </p>
   </div>
 </section>

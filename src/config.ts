@@ -11,7 +11,15 @@ export const SITE = {
   title: `${LEGAL_NAME} | Runtime safety for AI-driven robots`,
   description:
     'Software for safe robot deployment around people. MindMotion builds runtime safety software for AI-driven robots.',
-  tagline: 'Safe robot deployment around people',
+  // Homepage hero headline, written as phrases. Each phrase starts on its
+  // own line at every screen width.
+  tagline: ['Safe robot deployment', 'around people'],
+  // Homepage hero second line, written as phrases. Phrases may wrap onto
+  // separate lines on narrow screens, but a phrase is never split.
+  taglineSecondary: ['Runtime safety software', 'for AI-driven robots'],
+  // Mission statement, shown at the top of /mission and at the start of
+  // that page's meta description.
+  mission: 'Make robots safe to deploy around people',
 } as const;
 
 // Browser-tab and search-result title for every page other than the

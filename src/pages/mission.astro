@@ -3,18 +3,18 @@ import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
 import Section from '../components/Section.astro';
 import Footer from '../components/Footer.astro';
-import { pageTitle } from '../config.ts';
+import { SITE, pageTitle } from '../config.ts';
 ---
 
 <Base
   title={pageTitle('Mission')}
-  description="Make robots safe to deploy around people. MindMotion builds runtime safety software for AI-driven robots."
+  description={`${SITE.mission}. MindMotion builds runtime safety software for AI-driven robots.`}
 >
   <Nav />
   <main id="main">
     <Section id="mission" heading="Mission" headingLevel={1} class="!pb-8 md:!pb-12">
       <p class="text-base sm:text-lg md:text-xl text-accent-2 leading-snug">
-        Make robots safe to deploy around people
+        {SITE.mission}
       </p>
     </Section>
 
