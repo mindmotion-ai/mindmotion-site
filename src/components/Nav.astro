@@ -57,19 +57,14 @@ import { SITE, ASSETS, INSIGHTS_ENABLED } from '../config.ts';
 </header>
 
 <!--
-  The mobile menu overlay is a sibling of the header (not a child) so that its
-  `position: fixed` is relative to the viewport. If it were nested inside the
-  header, the header's `backdrop-filter` (from backdrop-blur) would establish
-  a new containing block and the overlay would only cover the header strip.
+  The mobile menu is a native <dialog> opened with showModal(). A modal
+  dialog is drawn above everything else on the page, and the browser makes
+  the rest of the page inert while it is open: keyboard focus, clicks, and
+  screen readers stay inside the menu, and the Escape key closes it. It is
+  a sibling of the header rather than a child, so the header's
+  backdrop-filter never affects how it is positioned.
 -->
-<div
-  id="mobile-menu"
-  class="lg:hidden fixed inset-0 z-50 bg-bg flex flex-col"
-  role="dialog"
-  aria-modal="true"
-  aria-label="Site menu"
-  hidden
->
+<dialog id="mobile-menu" class="mobile-menu lg:hidden" aria-label="Site menu">
   <div class="page-gutter py-5">
     <div class="max-w-content mx-auto flex items-center justify-between">
       <a
@@ -121,34 +116,71 @@ import { SITE, ASSETS, INSIGHTS_ENABLED } from '../config.ts';
       </ul>
     </div>
   </div>
-</div>
+</dialog>
+
+<style>
+  /* Full-screen menu below the lg breakpoint (1024px), where the menu
+     button is shown. Browser default dialog styles (centred box, border,
+     padding, white background) are replaced; display is set only while
+     open, because a closed dialog must stay display: none. From 1024px up
+     this rule does not apply and the lg:hidden class keeps the menu hidden. */
+  @media (width < 64rem) {
+    .mobile-menu:modal {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      max-width: none;
+      max-height: none;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      display: flex;
+      flex-direction: column;
+      background: var(--color-bg);
+      color: inherit;
+    }
+  }
+</style>
 
 <script is:inline>
   (function () {
     const toggle = document.getElementById('mobile-menu-toggle');
     const closeBtn = document.getElementById('mobile-menu-close');
     const menu = document.getElementById('mobile-menu');
-    if (!toggle || !closeBtn || !menu) return;
+    if (!toggle || !closeBtn || !menu || typeof menu.showModal !== 'function') return;
+
+    // Matches the lg breakpoint, from which the nav shows its links and
+    // the menu is hidden.
+    const desktop = window.matchMedia('(min-width: 64rem)');
 
     function open() {
-      menu.hidden = false;
+      if (desktop.matches) return;
+      menu.showModal();
       toggle.setAttribute('aria-expanded', 'true');
       document.body.style.overflow = 'hidden';
       closeBtn.focus();
     }
-    function close() {
-      menu.hidden = true;
+
+    // Runs however the menu closes: the close button, a menu link, the
+    // Escape key (handled by the browser), or widening the window.
+    menu.addEventListener('close', function () {
       toggle.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
       toggle.focus();
-    }
-    toggle.addEventListener('click', open);
-    closeBtn.addEventListener('click', close);
-    menu.querySelectorAll('a').forEach(function (a) {
-      a.addEventListener('click', function () { close(); });
     });
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && !menu.hidden) close();
+
+    toggle.addEventListener('click', open);
+    closeBtn.addEventListener('click', function () { menu.close(); });
+    menu.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () { menu.close(); });
+    });
+
+    // The menu is hidden from the lg breakpoint (1024px) up. Close it if
+    // the window is widened past that while it is open; otherwise the page
+    // would stay inert and unscrollable behind an invisible dialog.
+    desktop.addEventListener('change', function (e) {
+      if (e.matches && menu.open) menu.close();
     });
   })();
 </script>
