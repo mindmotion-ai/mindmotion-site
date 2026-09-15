@@ -25,7 +25,7 @@ const formEndpoint = CONTACT_FORM_ENDPOINT;
       required
       autocomplete="name"
       aria-describedby="name-error"
-      class="form-input w-full px-4 py-3 bg-white rounded-md focus:outline-none transition-shadow text-base"
+      class="form-input w-full px-4 py-3 bg-surface rounded-md focus:outline-none transition-shadow text-base"
     />
     <p id="name-error" class="error-msg mt-2 text-base text-red-500" hidden>
       Please enter your name.
@@ -43,7 +43,7 @@ const formEndpoint = CONTACT_FORM_ENDPOINT;
       required
       autocomplete="email"
       aria-describedby="email-error"
-      class="form-input w-full px-4 py-3 bg-white rounded-md focus:outline-none transition-shadow text-base"
+      class="form-input w-full px-4 py-3 bg-surface rounded-md focus:outline-none transition-shadow text-base"
     />
     <p id="email-error" class="error-msg mt-2 text-base text-red-500" hidden>
       Please enter your email.
@@ -61,7 +61,7 @@ const formEndpoint = CONTACT_FORM_ENDPOINT;
       required
       autocomplete="organization"
       aria-describedby="organization-error"
-      class="form-input w-full px-4 py-3 bg-white rounded-md focus:outline-none transition-shadow text-base"
+      class="form-input w-full px-4 py-3 bg-surface rounded-md focus:outline-none transition-shadow text-base"
     />
     <p id="organization-error" class="error-msg mt-2 text-base text-red-500" hidden>
       Please enter your organization.
@@ -78,7 +78,7 @@ const formEndpoint = CONTACT_FORM_ENDPOINT;
       required
       rows="7"
       aria-describedby="message-error"
-      class="form-input w-full px-4 py-3 bg-white rounded-md focus:outline-none transition-shadow text-base resize-y"
+      class="form-input w-full px-4 py-3 bg-surface rounded-md focus:outline-none transition-shadow text-base resize-y"
     ></textarea>
     <p id="message-error" class="error-msg mt-2 text-base text-red-500" hidden>
       Please enter a message.
@@ -92,7 +92,7 @@ const formEndpoint = CONTACT_FORM_ENDPOINT;
   <div class="flex flex-col items-start gap-3">
     <button
       type="submit"
-      class="px-7 py-3 bg-accent text-bg rounded-md font-medium text-base hover:bg-accent-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+      class="px-7 py-3 bg-accent text-bg rounded-md font-medium text-base hover:bg-accent-2 transition-colors disabled:opacity-(--opacity-disabled) disabled:cursor-not-allowed"
     >
       Send
     </button>
@@ -141,11 +141,11 @@ const formEndpoint = CONTACT_FORM_ENDPOINT;
 
 <style>
   .form-input {
-    box-shadow: 0 4px 16px rgba(15, 42, 68, 0.12);
+    box-shadow: var(--shadow-input);
     transition: box-shadow 180ms ease;
   }
   .form-input:focus {
-    box-shadow: 0 4px 16px rgba(15, 42, 68, 0.18), 0 0 0 4px rgba(15, 42, 68, 0.12);
+    box-shadow: var(--shadow-input-focus);
   }
   .form-input.is-invalid {
     box-shadow: 0 4px 16px rgba(220, 38, 38, 0.18);

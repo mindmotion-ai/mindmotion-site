@@ -2,12 +2,12 @@
 import { SITE, ASSETS, INSIGHTS_ENABLED } from '../config.ts';
 ---
 
-<header class="sticky top-0 z-40 bg-bg/85 backdrop-blur">
+<header class="sticky top-0 z-40 bg-nav backdrop-blur">
   <nav class="px-5 sm:px-6 py-5" aria-label="Primary">
     <div class="max-w-[1080px] mx-auto flex items-center justify-between">
       <a
         href="/"
-        class="flex items-center gap-3 transition-opacity duration-150 hover:opacity-70"
+        class="flex items-center gap-3 transition-opacity duration-150 hover:opacity-(--opacity-hover-fade)"
         aria-label={`${SITE.name} home`}
       >
         <img

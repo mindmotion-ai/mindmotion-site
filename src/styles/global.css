@@ -1,13 +1,55 @@
 @import "tailwindcss";
 
+/* Brand colours. These are the only literal colour values for the site's
+   screen design; every tint, shadow, and line below is derived from them.
+   The print stylesheet at the end of this file deliberately uses plain
+   black and white instead. */
 @theme {
   --color-bg: #FAFAFA;
+  --color-surface: #FFFFFF;
   --color-text: #333333;
   --color-accent: #0F2A44;
   --color-accent-2: #1F3D5C;
   --color-link: #3F7CAC;
 
   --font-sans: "Inter Variable", "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", system-ui, sans-serif;
+}
+
+/* Derived design tokens, named by role. Each is calculated from a brand
+   colour with color-mix (the same method Tailwind uses for classes such as
+   text-accent/70), so changing a brand colour updates all of them. Two
+   roles may share a value today and still diverge later.
+
+   `static` makes Tailwind always emit these variables. Without it, Tailwind
+   drops variables that no class uses, and it cannot see uses inside
+   component <style> blocks, so those colours would silently disappear. */
+@theme static {
+  /* Date and read-time text on Insights listings and posts. */
+  --color-meta: color-mix(in oklab, var(--color-accent) 70%, transparent);
+  /* Thin divider lines in posts. */
+  --color-hairline: color-mix(in oklab, var(--color-accent) 10%, transparent);
+  /* See-through background of the sticky nav. */
+  --color-nav: color-mix(in oklab, var(--color-bg) 85%, transparent);
+  /* Background of tinted sections (Section variant="tinted"). */
+  --color-tint: color-mix(in oklab, var(--color-accent) 3%, transparent);
+  /* Footer background, below its fade-in. */
+  --color-tint-footer: color-mix(in oklab, var(--color-accent) 5%, transparent);
+  /* Homepage hero background glow: centre, then fading out. */
+  --color-hero-glow: color-mix(in oklab, var(--color-accent) 6%, transparent);
+  --color-hero-glow-fade: color-mix(in oklab, var(--color-accent) 2%, transparent);
+  /* Background behind inline code in posts. */
+  --color-code-bg: color-mix(in oklab, var(--color-accent) 6%, transparent);
+
+  /* Contact form field edge, at rest and when focused. */
+  --shadow-input: 0 4px 16px color-mix(in oklab, var(--color-accent) 12%, transparent);
+  --shadow-input-focus:
+    0 4px 16px color-mix(in oklab, var(--color-accent) 18%, transparent),
+    0 0 0 4px color-mix(in oklab, var(--color-accent) 12%, transparent);
+
+  /* Logo links fade to this opacity on hover. */
+  --opacity-hover-fade: 0.7;
+  /* Buttons fade to this opacity while disabled (e.g. form sending). */
+  --opacity-disabled: 0.5;
 }
 
 @layer base {
@@ -74,7 +116,7 @@
      than hard. */
   .tinted-section {
     position: relative;
-    background: rgba(15, 42, 68, 0.03);
+    background: var(--color-tint);
   }
   .tinted-section::before,
   .tinted-section::after {
@@ -89,16 +131,16 @@
     top: -50px;
     background: linear-gradient(
       to bottom,
-      rgba(15, 42, 68, 0) 0,
-      rgba(15, 42, 68, 0.03) 100%
+      transparent 0,
+      var(--color-tint) 100%
     );
   }
   .tinted-section::after {
     bottom: -50px;
     background: linear-gradient(
       to bottom,
-      rgba(15, 42, 68, 0.03) 0,
-      rgba(15, 42, 68, 0) 100%
+      var(--color-tint) 0,
+      transparent 100%
     );
   }
 }
