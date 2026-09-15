@@ -16,9 +16,13 @@ Runs at <http://localhost:4321>.
 ## Build
 
 ```sh
-npm run build      # writes the static site to dist/
+npm run check      # type-checks the code (TypeScript and .astro files)
+npm run build      # runs the type check, then writes the static site to dist/
 npm run preview    # serves dist/ at localhost:4321 for verification
 ```
+
+`npm run build` stops if the type check finds an error, so a type error
+cannot reach a deploy (the deploy workflow uses the same build script).
 
 ## Deploy
 
