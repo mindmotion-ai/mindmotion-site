@@ -5,10 +5,11 @@ import Hero from '../components/Hero.astro';
 import Section from '../components/Section.astro';
 import Footer from '../components/Footer.astro';
 import { INSIGHTS_ENABLED, SITE } from '../config.ts';
-import { getInsightPosts } from '../lib/insights.ts';
+import { getInsightPosts, readingTime } from '../lib/insights.ts';
 
 // Insights post linked below "Why now", by file name. The link shows the
-// post's title and is left out while Insights is switched off.
+// post's title and reading time, and is left out while Insights is
+// switched off.
 const WHY_NOW_POST = 'robotics-is-where-aviation-was-in-1988';
 const whyNowPost = INSIGHTS_ENABLED
   ? (await getInsightPosts()).find((post) => post.id === WHY_NOW_POST)
@@ -96,7 +97,8 @@ if (INSIGHTS_ENABLED && !whyNowPost) {
       </p>
       {whyNowPost && (
         <p>
-          <a href={`/insights/${whyNowPost.id}/`} class="text-accent font-semibold hover:text-link">{whyNowPost.data.title}</a>
+          <a href={`/insights/${whyNowPost.id}/`} class="text-accent font-semibold hover:text-link">{whyNowPost.data.title}&nbsp;&rarr;</a>
+          <span class="block mt-2 text-meta">{readingTime(whyNowPost.body)}</span>
         </p>
       )}
     </Section>
