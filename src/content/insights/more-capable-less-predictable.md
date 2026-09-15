@@ -67,4 +67,4 @@ Something else has to hold.
 
 What is needed is a layer that measures, records, and bounds what the robot does, regardless of what the AI decides or how it evolves.
 
-A layer that sits between the AI's decisions and the robot's motion, structurally separate from both, providing the safety guarantee neither alone can provide.
+A layer that sits between the AI's decisions and the robot's motion, structurally separate from both, providing the independent safety function neither alone can provide.
