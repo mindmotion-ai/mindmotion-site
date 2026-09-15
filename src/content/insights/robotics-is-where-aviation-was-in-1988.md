@@ -43,6 +43,8 @@ Boeing's later aircraft take a different approach to how those limits are set. T
 
 In both cases, the safety claim is not that the pilot or the autopilot will be correct. The safety claim is that the envelope holds, regardless of what the pilot or the autopilot decides.
 
+The separation also changed what a pilot can do. With envelope protection in place, a pilot escaping windshear or responding to a collision alert can command the maneuver at full authority rather than holding back margin by hand. Airbus built this into every fly-by-wire airliner since the A320. The envelope did not force the pilot to fly more conservatively. It made it possible to fly the aircraft to its limits.
+
 This separation is reflected in how regulators evaluate the aircraft. The flight control computer is certified as a safety-critical artifact distinct from the autopilot above it. The two are not the same software, are not certified together, and are not evaluated under the same assumptions.
 
 The separation is what allowed commercial fly-by-wire aviation to scale across global fleets without each airline absorbing the risk of every avionics update.
