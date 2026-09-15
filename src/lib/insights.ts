@@ -5,8 +5,11 @@ export type InsightPost = CollectionEntry<'insights'>;
 // Average adult reading speed used for the "N min read" label.
 const WORDS_PER_MINUTE = 200;
 
+// Newest first. Posts with the same date are ordered by file name (slug),
+// so their order is fixed instead of depending on how files are loaded.
 const newestFirst = (a: InsightPost, b: InsightPost) =>
-  b.data.date.getTime() - a.data.date.getTime();
+  b.data.date.getTime() - a.data.date.getTime() ||
+  (a.id < b.id ? -1 : a.id > b.id ? 1 : 0);
 
 // Posts for the Insights pages, newest first. Drafts (draft: true) are
 // included while running the dev server, so they can be previewed at their
