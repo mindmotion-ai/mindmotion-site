@@ -77,7 +77,7 @@ Modern operating systems maintain a hardware-enforced separation between the ker
 
 If a userspace process misbehaves, the kernel contains the damage.
 
-That freedom is why a laptop or a phone can run apps from many different companies at the same time. None of them has to be perfect, because when one fails, the others keep running.
+That freedom is why a phone can run apps from many different companies at the same time. None of them has to be perfect, because when one fails, the others keep running.
 
 In safety-critical computing, the principle is taken further. The aviation industry standard ARINC 653 defines a separation kernel that provides isolation in both time and space between applications running on the same computer, with the isolation property certified independently of the applications themselves.
 
