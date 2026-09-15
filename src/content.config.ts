@@ -12,6 +12,9 @@ const insights = defineCollection({
     draft: z.boolean().default(false),
     tags: z.array(z.string()).optional(),
     image: z.string().optional(),
+    // Optional fixed position on the Insights page (1 = first). Posts
+    // without it are listed after numbered posts, newest first.
+    order: z.number().int().positive().optional(),
   }),
 });
 

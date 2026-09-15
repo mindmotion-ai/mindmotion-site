@@ -11,18 +11,34 @@ const newestFirst = (a: InsightPost, b: InsightPost) =>
   b.data.date.getTime() - a.data.date.getTime() ||
   (a.id < b.id ? -1 : a.id > b.id ? 1 : 0);
 
-// Posts for the Insights pages, newest first. Drafts (draft: true) are
+// Insights page order. A post can take a fixed position by setting `order`
+// in its frontmatter: numbered posts come first, lowest number first; all
+// other posts follow, newest first. With no numbers set, the page is simply
+// newest first.
+const pageOrder = (a: InsightPost, b: InsightPost) => {
+  const orderA = a.data.order;
+  const orderB = b.data.order;
+  if (orderA !== undefined && orderB !== undefined && orderA !== orderB) {
+    return orderA - orderB;
+  }
+  if (orderA !== undefined && orderB === undefined) return -1;
+  if (orderA === undefined && orderB !== undefined) return 1;
+  return newestFirst(a, b);
+};
+
+// Posts for the Insights pages, in page order. Drafts (draft: true) are
 // included while running the dev server, so they can be previewed at their
 // real URLs, and left out of production builds.
 export async function getInsightPosts(): Promise<InsightPost[]> {
   const posts = await getCollection('insights', ({ data }) =>
     import.meta.env.PROD ? !data.draft : true,
   );
-  return posts.sort(newestFirst);
+  return posts.sort(pageOrder);
 }
 
-// Posts for the RSS feed, newest first. Drafts are never included, even in
-// development, because feed readers may cache what they fetch.
+// Posts for the RSS feed, newest first (feeds are read by date, so `order`
+// does not apply). Drafts are never included, even in development, because
+// feed readers may cache what they fetch.
 export async function getPublishedInsightPosts(): Promise<InsightPost[]> {
   const posts = await getCollection('insights', ({ data }) => !data.draft);
   return posts.sort(newestFirst);
