@@ -9,13 +9,13 @@ tags:
   - safety
 ---
 
-Runtime safety software for AI-driven robots operates at the interface between the AI and the robot, where decisions become motion.
+Runtime safety software for AI-driven robots operates at the execution boundary between the AI and the robot, where decisions become motion.
 
-At that interface, it does three things on every motion, throughout the deployment. It measures what is happening. It records what it observes. It bounds the motion inside an envelope that the company deploying the robot has declared.
+At that boundary, it does three things on every motion, throughout the deployment. It measures what is happening. It records what it observes. It bounds the motion inside an envelope that the company deploying the robot has declared.
 
 These three functions are not a feature list. They are the structural job of the software. Each carries weight the others cannot. Together they describe what runtime safety software for AI-driven robots actually is.
 
-This post describes the work in concrete terms. What sits on either side of the interface. What each of the three functions means. What the layer does and does not do. What makes it useful when the AI is updated or replaced.
+This post describes the work in concrete terms. What sits on either side of the boundary. What each of the three functions means. What the layer does and does not do. What makes it useful when the AI is updated or replaced.
 
 ## What sits on either side
 
@@ -39,7 +39,7 @@ On the AI side, it observes the stream of decisions arriving from the AI. On the
 
 Both sides have to be measured. Without measuring the AI's decisions, the software cannot evaluate whether the resulting motion will stay inside the envelope. Without measuring the robot's state, it cannot evaluate whether the motion is in fact what the AI requested.
 
-A measurement is only useful if it is both timely and accurate. Late measurements describe a past that can no longer constrain the next motion. Inaccurate measurements describe a robot that does not exist.
+A measurement is only useful if it is both timely and accurate. Late measurements describe a past that can no longer bound the next motion. Inaccurate measurements describe a robot that does not exist.
 
 Both are failures of the safety software itself, not of the system it is monitoring.
 
