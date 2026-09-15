@@ -12,7 +12,7 @@ import { SITE } from '../config.ts';
   <main id="main">
     <Hero />
 
-    <Section id="problem" heading="The problem">
+    <Section id="problem" heading="The problem" variant="tinted">
       <p>
         Humanoids, cobots, and autonomous robots are moving out of industrial
         cages and into shared spaces around people. Their behavior is
@@ -28,7 +28,10 @@ import { SITE } from '../config.ts';
       </p>
     </Section>
 
-    <Section id="what-we-do" heading="What we do" variant="tinted" class="!pb-8 md:!pb-12">
+    <Section id="what-we-do" heading="What we do" class="!pb-8 md:!pb-12">
+      <p>
+        Safety that does not cost throughput.
+      </p>
       <p>
         We are building runtime safety software for AI-driven robots. The
         software is the execution boundary between the brain and the body,
@@ -57,6 +60,21 @@ import { SITE } from '../config.ts';
           />
         </picture>
       </div>
+    </Section>
+
+    <Section id="how-it-works" heading="How it works" variant="tinted">
+      <p>
+        The software keeps the AI in control by handling the millisecond
+        physics.
+      </p>
+      <p>
+        Anti-lock brakes do the same for a driver. Braking hard can lock the
+        wheels, which then slide and cannot steer. ABS handles the millisecond
+        physics the driver cannot, so the wheels keep rolling, the car stays
+        steerable, and the driver can get around the car ahead. Anti-lock
+        brakes do not prevent the collision; they keep the driver in control
+        to avoid it.
+      </p>
     </Section>
 
     <Section id="why-now" heading="Why now">
