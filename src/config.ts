@@ -15,9 +15,6 @@ export const SITE = {
 // is committed. See spec §9.2 and operations manual §6.
 export const INSIGHTS_ENABLED = true;
 
-export const HOMEPAGE_CONTACT_ENABLED = false;
-export const CONTACT_PAGE_ENABLED = true;
-
 // Public vanity URL where MindMotion's booking page lives. Stable across
 // scheduler changes. Use this constant anywhere on the Site (or in
 // external communication) that needs to link to the booking page.
