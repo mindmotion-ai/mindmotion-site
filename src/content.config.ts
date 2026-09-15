@@ -10,7 +10,6 @@ const insights = defineCollection({
     author: z.string().default('MindMotion'),
     draft: z.boolean().default(false),
     tags: z.array(z.string()).optional(),
-    series: z.string().optional(),
     image: z.string().optional(),
   }),
 });
