@@ -15,7 +15,7 @@ The pilot retained authority over how the aircraft was flown. A separate system,
 
 The pilot could ask for any maneuver. The flight control computer would refuse to execute it outside a defined safety envelope.
 
-The two systems were built separately, certified separately, and could fail independently. That separation is what allowed commercial aviation to scale, over the next three decades, into the global fleet it is today.
+The two systems were built separately, certified separately, and could fail independently. Over the next three decades, that separation became the standard in the fly-by-wire airliners that now make up much of the global fleet.
 
 AI-driven robotics is at the same moment.
 
