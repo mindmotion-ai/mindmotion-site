@@ -85,7 +85,11 @@ const breadcrumbJsonLd = {
 >
   <Nav />
   <main id="main">
-    <article class="page-top pb-14 md:pb-24 page-gutter">
+    {/* fade-in-up gives posts the same entrance motion as the other pages
+         (fade in while rising 12px over 600ms). The scroll-triggered
+         `reveal` class is not used here: it waits until 10% of the element
+         is on screen, which a long post on a phone may never reach. */}
+    <article class="fade-in-up page-top pb-14 md:pb-24 page-gutter">
       <div class="max-w-content mx-auto">
         <h1 class="text-3xl sm:text-5xl md:text-[56px] font-semibold text-accent leading-[1.1] tracking-tight">
           {title}
