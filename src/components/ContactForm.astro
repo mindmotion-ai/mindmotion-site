@@ -45,7 +45,12 @@ const formEndpoint = CONTACT_FORM_ENDPOINT;
       aria-describedby="email-error"
       class="form-input w-full px-4 py-3 bg-surface rounded-md focus:outline-none transition-shadow text-base"
     />
-    <p id="email-error" class="error-msg mt-2 text-base text-red-500" hidden>
+    <p
+      id="email-error"
+      class="error-msg mt-2 text-base text-red-500"
+      data-invalid-message="Please enter a valid email address."
+      hidden
+    >
       Please enter your email.
     </p>
   </div>
@@ -161,6 +166,14 @@ const formEndpoint = CONTACT_FORM_ENDPOINT;
   const submitError = document.getElementById('contact-error');
   const submitBtn = form?.querySelector('button[type="submit"]');
 
+  // Each error element's text in the markup is its "field is empty"
+  // message; an optional data-invalid-message holds the "value is not
+  // valid" message. Remember the empty message once, so switching between
+  // the two cases always shows the right one.
+  form?.querySelectorAll('.error-msg').forEach((errorEl) => {
+    errorEl.dataset.emptyMessage = errorEl.textContent.trim();
+  });
+
   const validateField = (input) => {
     const isEmpty = !input.value.trim();
     const isInvalidEmail =
@@ -175,9 +188,9 @@ const formEndpoint = CONTACT_FORM_ENDPOINT;
     const errorEl = document.getElementById(`${input.id}-error`);
     if (errorEl) {
       errorEl.hidden = !isInvalid;
-      if (isInvalidEmail) {
-        errorEl.textContent = 'Please enter a valid email address.';
-      }
+      errorEl.textContent = isInvalidEmail
+        ? errorEl.dataset.invalidMessage
+        : errorEl.dataset.emptyMessage;
     }
     return !isInvalid;
   };
