@@ -61,7 +61,7 @@ A record produced this way is the artifact an insurer, a regulator, or an invest
 
 ## Bound
 
-The software enforces the envelope. Motion that would leave the envelope is not produced.
+The software enforces the envelope. It acts on any decision whose resulting motion would leave the envelope.
 
 The specific mechanism depends on the situation. The software can modify a decision so the resulting motion stays inside the envelope. It can stop a motion that has begun to leave the envelope and return the robot to a safe state. It can reject a decision before any motion is produced and request a new decision.
 
