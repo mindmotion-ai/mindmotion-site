@@ -1,13 +1,22 @@
+const LEGAL_NAME = 'MindMotion, Inc.';
+
 export const SITE = {
   url: 'https://mindmotion.ai',
-  name: 'MindMotion, Inc.',
-  legalName: 'MindMotion, Inc.',
+  // Wordmark shown in the nav and used in aria labels, og:site_name, and
+  // JSON-LD. Currently the legal name, for wordmark protection.
+  name: LEGAL_NAME,
+  // Legal entity name, used in page titles and the footer copyright.
+  legalName: LEGAL_NAME,
   org: 'mindmotion-ai',
-  title: 'MindMotion, Inc. | Runtime safety for AI-driven robots',
+  title: `${LEGAL_NAME} | Runtime safety for AI-driven robots`,
   description:
     'Software for safe robot deployment around people. MindMotion builds runtime safety software for AI-driven robots.',
   tagline: 'Safe robot deployment around people',
 } as const;
+
+// Browser-tab and search-result title for every page other than the
+// homepage (which uses SITE.title). Change the format here, not per page.
+export const pageTitle = (page: string) => `${page} | ${SITE.legalName}`;
 
 // Insights publishing gate. While false: nav/footer omit the link, homepage preview
 // section is not rendered, /insights/* are excluded from the sitemap, and robots.txt

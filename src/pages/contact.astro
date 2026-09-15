@@ -4,10 +4,11 @@ import Nav from '../components/Nav.astro';
 import Section from '../components/Section.astro';
 import Footer from '../components/Footer.astro';
 import ContactForm from '../components/ContactForm.astro';
+import { pageTitle } from '../config.ts';
 ---
 
 <Base
-  title="Contact | MindMotion, Inc."
+  title={pageTitle('Contact')}
   description="Get in touch with MindMotion."
 >
   <Nav />

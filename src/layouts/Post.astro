@@ -2,7 +2,7 @@
 import Base from './Base.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
-import { SITE } from '../config.ts';
+import { SITE, pageTitle } from '../config.ts';
 
 interface Props {
   title: string;
@@ -76,7 +76,7 @@ const breadcrumbJsonLd = {
 ---
 
 <Base
-  title={`${title} | ${SITE.legalName}`}
+  title={pageTitle(title)}
   description={description}
   canonicalPath={`/insights/${slug}/`}
   ogImage={image ?? '/og-default.png'}
