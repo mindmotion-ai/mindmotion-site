@@ -62,7 +62,7 @@ export const ASSETS = {
 // date must stay in the future, and the standard recommends less than a
 // year ahead: renew it before it passes.
 export const SECURITY_TXT = {
-  expires: '2027-01-01T00:00:00.000Z',
+  expires: '2027-09-01T00:00:00.000Z',
   preferredLanguages: 'en',
 } as const;
 
