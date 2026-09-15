@@ -39,7 +39,7 @@ export const ASSETS = {
   // actual file.
   ogImage: {
     src: '/og-default.png',
-    alt: 'MindMotion: runtime safety for AI-driven robots',
+    alt: 'MindMotion, Inc. logo and the line: Software for safe robot deployment around people',
     width: 1200,
     height: 630,
   },
