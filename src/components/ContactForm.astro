@@ -33,7 +33,7 @@ const formEndpoint = CONTACT_FORM_ENDPOINT;
       aria-describedby="name-error"
       class="form-input w-full px-4 py-3 bg-surface rounded-md focus:outline-none transition-shadow text-base"
     />
-    <p id="name-error" class="error-msg mt-2 text-base text-red-500" hidden>
+    <p id="name-error" class="error-msg mt-2 text-base text-error" hidden>
       Please enter your name.
     </p>
   </div>
@@ -53,7 +53,7 @@ const formEndpoint = CONTACT_FORM_ENDPOINT;
     />
     <p
       id="email-error"
-      class="error-msg mt-2 text-base text-red-500"
+      class="error-msg mt-2 text-base text-error"
       data-invalid-message="Please enter a valid email address."
       hidden
     >
@@ -74,7 +74,7 @@ const formEndpoint = CONTACT_FORM_ENDPOINT;
       aria-describedby="organization-error"
       class="form-input w-full px-4 py-3 bg-surface rounded-md focus:outline-none transition-shadow text-base"
     />
-    <p id="organization-error" class="error-msg mt-2 text-base text-red-500" hidden>
+    <p id="organization-error" class="error-msg mt-2 text-base text-error" hidden>
       Please enter your organization.
     </p>
   </div>
@@ -91,7 +91,7 @@ const formEndpoint = CONTACT_FORM_ENDPOINT;
       aria-describedby="message-error"
       class="form-input w-full px-4 py-3 bg-surface rounded-md focus:outline-none transition-shadow text-base resize-y"
     ></textarea>
-    <p id="message-error" class="error-msg mt-2 text-base text-red-500" hidden>
+    <p id="message-error" class="error-msg mt-2 text-base text-error" hidden>
       Please enter a message.
     </p>
     <p class="mt-2 text-sm text-accent-2">
@@ -116,7 +116,7 @@ const formEndpoint = CONTACT_FORM_ENDPOINT;
 
   <p
     id="contact-error"
-    class="text-base text-red-500"
+    class="text-base text-error"
     role="alert"
     aria-live="polite"
     hidden
@@ -134,10 +134,10 @@ const formEndpoint = CONTACT_FORM_ENDPOINT;
     box-shadow: var(--shadow-input-focus);
   }
   .form-input.is-invalid {
-    box-shadow: 0 4px 16px rgba(220, 38, 38, 0.18);
+    box-shadow: var(--shadow-input-invalid);
   }
   .form-input.is-invalid:focus {
-    box-shadow: 0 4px 16px rgba(220, 38, 38, 0.22), 0 0 0 4px rgba(220, 38, 38, 0.18);
+    box-shadow: var(--shadow-input-invalid-focus);
   }
 </style>
 

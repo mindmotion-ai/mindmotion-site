@@ -11,6 +11,10 @@
   --color-accent: #0F2A44;
   --color-accent-2: #1F3D5C;
   --color-link: #3F7CAC;
+  /* Form error text and invalid-field glow. #DC2626 has a 4.63:1 contrast
+     ratio on --color-bg, above the WCAG AA minimum of 4.5:1 for normal-size
+     text; the lighter red used before (Tailwind red-500) was 3.65:1. */
+  --color-error: #DC2626;
 
   /* Layout. Sizes in rem scale with the root font size (18px on phones,
      27px from 768px up; see html below). */
@@ -64,6 +68,11 @@
   --shadow-input-focus:
     0 4px 16px color-mix(in oklab, var(--color-accent) 18%, transparent),
     0 0 0 4px color-mix(in oklab, var(--color-accent) 12%, transparent);
+  /* The same field edge when the field fails validation. */
+  --shadow-input-invalid: 0 4px 16px color-mix(in oklab, var(--color-error) 18%, transparent);
+  --shadow-input-invalid-focus:
+    0 4px 16px color-mix(in oklab, var(--color-error) 22%, transparent),
+    0 0 0 4px color-mix(in oklab, var(--color-error) 18%, transparent);
 
   /* Logo links fade to this opacity on hover. */
   --opacity-hover-fade: 0.7;
