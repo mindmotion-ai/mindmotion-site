@@ -76,6 +76,27 @@ export const BROWSER_COLORS = {
   background: '#FAFAFA',
 } as const;
 
+// Crawlers that collect web content to train AI models, blocked from the
+// whole site in robots.txt. The Terms of Service prohibit collecting Site
+// content for AI or machine-learning training except as robots.txt
+// permits, so this list is what makes that clause consistent with
+// robots.txt. Search-engine crawlers are unaffected. Each entry is the
+// robots.txt token its operator documents for AI-training opt-out. New
+// crawlers appear over time: review this list at least yearly.
+export const AI_TRAINING_CRAWLERS = [
+  'GPTBot', // OpenAI
+  'ClaudeBot', // Anthropic
+  'anthropic-ai', // Anthropic (older token)
+  'Google-Extended', // Google (Gemini training; not Google Search)
+  'Applebot-Extended', // Apple (AI training; not Apple search)
+  'Meta-ExternalAgent', // Meta
+  'CCBot', // Common Crawl (datasets widely used for AI training)
+  'Bytespider', // ByteDance
+  'cohere-training-data-crawler', // Cohere
+  'AI2Bot', // Allen Institute for AI
+  'PanguBot', // Huawei
+] as const;
+
 // Browser-tab and search-result title for every page other than the
 // homepage (which uses SITE.title). Change the format here, not per page.
 export const pageTitle = (page: string) => `${page} | ${SITE.legalName}`;
