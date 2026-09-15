@@ -79,7 +79,7 @@ const breadcrumbJsonLd = {
   title={pageTitle(title)}
   description={description}
   canonicalPath={`/insights/${slug}/`}
-  ogImage={image ?? ASSETS.ogImage.src}
+  ogImage={image ? { src: image, alt: title } : undefined}
   type="article"
   noindex={!INSIGHTS_ENABLED}
 >
