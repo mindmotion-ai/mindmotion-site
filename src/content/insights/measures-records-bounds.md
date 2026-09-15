@@ -63,7 +63,9 @@ A record produced this way is the artifact an insurer, a regulator, or an invest
 
 The software enforces the envelope. It acts on any decision whose resulting motion would leave the envelope.
 
-The specific mechanism depends on the situation. The software can modify a decision so the resulting motion stays inside the envelope. It can stop a motion that has begun to leave the envelope and return the robot to a safe state. It can reject a decision before any motion is produced and request a new decision.
+In the ordinary case the software modifies the decision so the resulting motion stays inside the envelope, and the task continues. This is the normal behavior, and it is continuous: the motion is adjusted, not interrupted.
+
+Where a decision cannot be modified into an acceptable motion, the software rejects it before any motion is produced and requests a new decision. Stopping the robot and returning it to a safe state is the last resort, used when neither of the first two is available.
 
 In all cases, the robot's motion is held inside a region the company deploying the robot has declared acceptable, regardless of what the AI decides.
 
