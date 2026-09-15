@@ -162,8 +162,9 @@ import { SITE, ASSETS, INSIGHTS_ENABLED } from '../config.ts';
       closeBtn.focus();
     }
 
-    // Runs however the menu closes: the close button, a menu link, the
-    // Escape key (handled by the browser), or widening the window.
+    // Runs however the menu closes: the close button, the Escape key
+    // (handled by the browser), widening the window, or returning to this
+    // page with the browser's Back button.
     menu.addEventListener('close', function () {
       toggle.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
@@ -172,8 +173,15 @@ import { SITE, ASSETS, INSIGHTS_ENABLED } from '../config.ts';
 
     toggle.addEventListener('click', open);
     closeBtn.addEventListener('click', function () { menu.close(); });
-    menu.querySelectorAll('a').forEach(function (a) {
-      a.addEventListener('click', function () { menu.close(); });
+
+    // Choosing a menu link does not close the menu: it stays on screen
+    // until the new page replaces it. Closing it first would reveal the
+    // current page underneath for a moment before the new page appears.
+
+    // If the visitor comes back with the Back button, the browser may
+    // restore this page exactly as it was left, menu still open. Close it.
+    window.addEventListener('pageshow', function (e) {
+      if (e.persisted && menu.open) menu.close();
     });
 
     // The menu is hidden from the lg breakpoint (1024px) up. Close it if
