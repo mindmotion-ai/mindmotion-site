@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import { SITE, MEET_PUBLIC_URL, AI_TRAINING_CRAWLERS } from '../config.ts';
+import { SITE, MEET_PUBLIC_URL, INSIGHTS_ENABLED, AI_TRAINING_CRAWLERS } from '../config.ts';
 
 // Generated from src/config.ts so the rules follow the site settings.
 //
@@ -10,6 +10,7 @@ export const GET: APIRoute = () => {
   const lines = [
     'User-agent: *',
     `Disallow: ${new URL(MEET_PUBLIC_URL).pathname}`,
+    ...(INSIGHTS_ENABLED ? [] : ['Disallow: /insights/']),
     '',
     ...AI_TRAINING_CRAWLERS.map((crawler) => `User-agent: ${crawler}`),
     'Disallow: /',

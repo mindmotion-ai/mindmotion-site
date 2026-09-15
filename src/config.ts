@@ -101,10 +101,11 @@ export const AI_TRAINING_CRAWLERS = [
 // homepage (which uses SITE.title). Change the format here, not per page.
 export const pageTitle = (page: string) => `${page} | ${SITE.legalName}`;
 
-// Insights publishing gate. While false: nav/footer omit the link, homepage preview
-// section is not rendered, /insights/* are excluded from the sitemap, and robots.txt
-// disallows /insights/. Flip to true once ≥3 publishable posts exist and a cadence
-// is committed. See spec §9.2 and operations manual §6.
+// Insights on/off switch. When false, the Insights pages still build (so
+// they can be checked at their real URLs) but are hidden from visitors and
+// search engines: the nav and mobile menu omit the link, /insights/ pages
+// carry a noindex tag and are left out of the sitemap, robots.txt
+// disallows /insights/, and the RSS feed is empty.
 export const INSIGHTS_ENABLED = true;
 
 // Public vanity URL where MindMotion's booking page lives. Stable across
