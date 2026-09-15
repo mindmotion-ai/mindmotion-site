@@ -77,6 +77,8 @@ Modern operating systems maintain a hardware-enforced separation between the ker
 
 If a userspace process misbehaves, the kernel contains the damage.
 
+That freedom is what lets one computer run programs from many sources at once. No program has to be trusted with the underlying system.
+
 In safety-critical computing, the principle is taken further. The aviation industry standard ARINC 653 defines a separation kernel that provides isolation in both time and space between applications running on the same computer, with the isolation property certified independently of the applications themselves.
 
 The same idea appears in modern automotive hypervisors used for mixed-criticality software, in formally verified microkernels such as seL4, and in the Common Criteria's separation kernel protection profile used by defense and government systems.
