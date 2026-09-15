@@ -141,7 +141,7 @@ const formEndpoint = CONTACT_FORM_ENDPOINT;
   }
 </style>
 
-<script define:vars={{ formEndpoint }}>
+<script is:inline define:vars={{ formEndpoint }}>
   const form = document.getElementById('contact-form');
   const submitError = document.getElementById('contact-error');
   const submitBtn = form?.querySelector('button[type="submit"]');
