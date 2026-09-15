@@ -40,6 +40,18 @@
    text-accent/70), so changing a brand colour updates all of them. Two
    roles may share a value today and still diverge later.
 
+   These values reproduce the site's original rendering exactly:
+   - Tints and shadows mix in srgb, the colour space of the plain colour
+     codes they replaced; text-meta, hairline, and nav mix in oklab, as the
+     Tailwind classes they replaced did.
+   - Some strengths have four decimals. The original build stored those
+     tints as 8-bit colour codes, which rounds a strength to the nearest
+     1/255 (3% became 8/255, which is 3.1373%); the values are those
+     rounded strengths.
+   - Gradients that use these tokens say "in srgb". A gradient containing a
+     color-mix() colour otherwise blends in oklab (CSS Images 4), which
+     shifts its in-between shades by one step compared with the original.
+
    `static` makes Tailwind always emit these variables. Without it, Tailwind
    drops variables that no class uses, and it cannot see uses inside
    component <style> blocks, so those colours would silently disappear. */
@@ -51,28 +63,28 @@
   /* See-through background of the sticky nav. */
   --color-nav: color-mix(in oklab, var(--color-bg) 85%, transparent);
   /* Background of tinted sections (Section variant="tinted"). */
-  --color-tint: color-mix(in oklab, var(--color-accent) 3%, transparent);
+  --color-tint: color-mix(in srgb, var(--color-accent) 3.1373%, transparent);
   /* Footer background, below its fade-in. */
-  --color-tint-footer: color-mix(in oklab, var(--color-accent) 5%, transparent);
+  --color-tint-footer: color-mix(in srgb, var(--color-accent) 5.098%, transparent);
   /* Homepage hero background glow: centre, then fading out. */
-  --color-hero-glow: color-mix(in oklab, var(--color-accent) 6%, transparent);
-  --color-hero-glow-fade: color-mix(in oklab, var(--color-accent) 2%, transparent);
+  --color-hero-glow: color-mix(in srgb, var(--color-accent) 6%, transparent);
+  --color-hero-glow-fade: color-mix(in srgb, var(--color-accent) 2%, transparent);
   /* Background behind inline code in posts. */
-  --color-code-bg: color-mix(in oklab, var(--color-accent) 6%, transparent);
+  --color-code-bg: color-mix(in srgb, var(--color-accent) 5.8824%, transparent);
   /* Length of the soft fade at the top and bottom edges of tinted
      sections and at the top of the footer. */
   --spacing-tint-fade: 50px;
 
   /* Contact form field edge, at rest and when focused. */
-  --shadow-input: 0 4px 16px color-mix(in oklab, var(--color-accent) 12%, transparent);
+  --shadow-input: 0 4px 16px color-mix(in srgb, var(--color-accent) 12.1569%, transparent);
   --shadow-input-focus:
-    0 4px 16px color-mix(in oklab, var(--color-accent) 18%, transparent),
-    0 0 0 4px color-mix(in oklab, var(--color-accent) 12%, transparent);
+    0 4px 16px color-mix(in srgb, var(--color-accent) 18.0392%, transparent),
+    0 0 0 4px color-mix(in srgb, var(--color-accent) 12.1569%, transparent);
   /* The same field edge when the field fails validation. */
-  --shadow-input-invalid: 0 4px 16px color-mix(in oklab, var(--color-error) 18%, transparent);
+  --shadow-input-invalid: 0 4px 16px color-mix(in srgb, var(--color-error) 18.0392%, transparent);
   --shadow-input-invalid-focus:
-    0 4px 16px color-mix(in oklab, var(--color-error) 22%, transparent),
-    0 0 0 4px color-mix(in oklab, var(--color-error) 18%, transparent);
+    0 4px 16px color-mix(in srgb, var(--color-error) 21.9608%, transparent),
+    0 0 0 4px color-mix(in srgb, var(--color-error) 18.0392%, transparent);
 
   /* Logo links fade to this opacity on hover. */
   --opacity-hover-fade: 0.7;
@@ -155,10 +167,12 @@
     height: var(--spacing-tint-fade);
     pointer-events: none;
   }
+  /* "in srgb": blend exactly like the original gradients; see the
+     derived design tokens above. */
   .tinted-section::before {
     top: calc(var(--spacing-tint-fade) * -1);
     background: linear-gradient(
-      to bottom,
+      to bottom in srgb,
       transparent 0,
       var(--color-tint) 100%
     );
@@ -166,7 +180,7 @@
   .tinted-section::after {
     bottom: calc(var(--spacing-tint-fade) * -1);
     background: linear-gradient(
-      to bottom,
+      to bottom in srgb,
       var(--color-tint) 0,
       transparent 100%
     );
