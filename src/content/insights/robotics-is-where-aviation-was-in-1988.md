@@ -89,7 +89,7 @@ In each case, the decision-making system grew more capable and more variable. Au
 
 In each case, the conclusion was the same. Improving the decision-making system was not sufficient. The safety claim had to be moved into a layer below the decision-making system, a layer that was structurally independent of it and that could be certified, audited, and held accountable separately.
 
-In each case, that layer was given a defined operational envelope and was given the job of holding the system inside it. In each case, the layer was independent enough to remain in place when the decision-making system was updated, retrained, or replaced. In each case, deployment at scale followed the separation, not the other way around.
+In each case, that layer was given a defined operational envelope and was given the job of holding the system inside it. In each case, the layer was independent enough to remain in place when the decision-making system was updated, retrained, or replaced. In each case, safe deployment at scale followed the separation, not the other way around.
 
 In each case, the separation also produced something the prior arrangement had not: a system insurable at scale. The structural property and the underwriting property are the same property viewed from different sides.
 
