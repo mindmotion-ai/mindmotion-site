@@ -10,7 +10,7 @@
   --color-text: #333333;
   --color-accent: #0F2A44;
   --color-accent-2: #1F3D5C;
-  --color-link: #3F7CAC;
+  --color-link: #3D78A6;
   /* Form error text and invalid-field glow. #DC2626 has a 4.63:1 contrast
      ratio on --color-bg, above the WCAG AA minimum of 4.5:1 for normal-size
      text; the lighter red used before (Tailwind red-500) was 3.65:1. */
