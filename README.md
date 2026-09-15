@@ -81,6 +81,11 @@ Deliberate exceptions:
 
 ## Repository conventions
 
+- This repository is public. The pre-commit hook at
+  [`.githooks/pre-commit`](.githooks/pre-commit) blocks any commit whose
+  staged changes look like they contain a password, access key, or token
+  (using [gitleaks](https://github.com/gitleaks/gitleaks); skipped with a
+  notice if gitleaks is not installed). `npm install` activates the hook.
 - Commits that touch [`src/pages/privacy.astro`](src/pages/privacy.astro)
   or [`src/pages/terms.astro`](src/pages/terms.astro) auto-bump the
   `effectiveDate` to today via a pre-commit hook at

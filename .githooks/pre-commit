@@ -2,19 +2,48 @@
 #
 # pre-commit hook
 #
-# When src/pages/privacy.astro or src/pages/terms.astro is staged for commit,
-# auto-bump the effectiveDate in the file to today's date (US format,
-# "Month D, YYYY") and re-stage the file. Then print a reminder to update
-# the CHANGELOG-LEGAL.md in the mindmotion-site-source repository.
+# 1. Secret scan. Block the commit if the staged changes contain something
+#    that looks like a password, access key, or token. This repository is
+#    public, so a committed secret would be readable by anyone, and deleting
+#    it in a later commit would not remove it from the history. This
+#    repository sets its own hooks folder, which replaces any global git
+#    hook on the machine, so the scan has to run here. Requires gitleaks
+#    (https://github.com/gitleaks/gitleaks); if it is not installed, the
+#    scan is skipped with a notice.
 #
-# The bump assumes any commit touching these documents is a material change.
-# For a truly cosmetic-only change (typo fix, whitespace), bypass with:
-#   git commit --no-verify
+# 2. Legal effective dates. When src/pages/privacy.astro or
+#    src/pages/terms.astro is staged for commit, auto-bump the effectiveDate
+#    in the file to today's date (US format, "Month D, YYYY") and re-stage
+#    the file. Then print a reminder to update the CHANGELOG-LEGAL.md in the
+#    mindmotion-site-source repository.
 #
-# To activate this hook, run once per clone:
+#    The bump assumes any commit touching these documents is a material
+#    change. For a truly cosmetic-only change (typo fix, whitespace), bypass
+#    with:
+#      git commit --no-verify
+#    (this also skips the secret scan for that commit).
+#
+# To activate this hook, run once per clone (npm install does this through
+# the "prepare" script):
 #   git config core.hooksPath .githooks
 
 set -euo pipefail
+
+# --- 1. Secret scan ---------------------------------------------------------
+
+if command -v gitleaks >/dev/null 2>&1; then
+    if ! gitleaks protect --staged --redact --no-banner; then
+        echo >&2
+        echo "pre-commit: gitleaks found a possible secret in the staged changes." >&2
+        echo "Remove it and stage again. If it is a false positive, add a" >&2
+        echo "'gitleaks:allow' comment on that line." >&2
+        exit 1
+    fi
+else
+    echo "pre-commit: gitleaks is not installed; skipping the secret scan." >&2
+fi
+
+# --- 2. Legal effective dates -----------------------------------------------
 
 STAGED_LEGAL=$(git diff --cached --name-only | grep -E '^src/pages/(privacy|terms)\.astro$' || true)
 
