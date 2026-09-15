@@ -36,6 +36,10 @@ import { pageTitle } from '../config.ts';
   </main>
 
   <script is:inline>
+    // The contact form reports success with this event; this page owns the
+    // confirmation. Swap the form for the thank-you section and move focus
+    // to its heading, so keyboard and screen-reader users are taken to
+    // (and hear) the confirmation instead of being left on a hidden form.
     document.addEventListener('mindmotion:contact-success', () => {
       const formSection = document.getElementById('contact-form-section');
       const thanks = document.getElementById('contact-thanks-section');
@@ -43,6 +47,11 @@ import { pageTitle } from '../config.ts';
       if (thanks) {
         thanks.hidden = false;
         requestAnimationFrame(() => thanks.classList.add('is-visible'));
+        const heading = thanks.querySelector('h1');
+        if (heading) {
+          heading.setAttribute('tabindex', '-1');
+          heading.focus({ preventScroll: true });
+        }
         thanks.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     });

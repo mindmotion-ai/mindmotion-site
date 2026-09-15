@@ -1,4 +1,10 @@
 ---
+/**
+ * Contact form: fields, inline validation, and submission to the form
+ * provider. On a successful submission it dispatches the document event
+ * `mindmotion:contact-success` and shows nothing itself; the page that
+ * hosts the form owns the confirmation (see src/pages/contact.astro).
+ */
 import { CONTACT_FORM_ENDPOINT } from '../config.ts';
 const formEndpoint = CONTACT_FORM_ENDPOINT;
 ---
@@ -119,31 +125,6 @@ const formEndpoint = CONTACT_FORM_ENDPOINT;
   </p>
 </form>
 
-<div
-  id="contact-success"
-  role="status"
-  aria-live="polite"
-  hidden
->
-  <div class="flex items-start gap-3">
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      aria-hidden="true"
-      class="h-7 w-7 text-accent flex-shrink-0 mt-1"
-    >
-      <polyline points="5 12 10 17 19 8" />
-    </svg>
-    <p class="text-base text-accent">
-      Thank you. We have received your message and will respond shortly.
-    </p>
-  </div>
-</div>
-
 <style>
   .form-input {
     box-shadow: var(--shadow-input);
@@ -162,7 +143,6 @@ const formEndpoint = CONTACT_FORM_ENDPOINT;
 
 <script define:vars={{ formEndpoint }}>
   const form = document.getElementById('contact-form');
-  const success = document.getElementById('contact-success');
   const submitError = document.getElementById('contact-error');
   const submitBtn = form?.querySelector('button[type="submit"]');
 
@@ -206,7 +186,7 @@ const formEndpoint = CONTACT_FORM_ENDPOINT;
 
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
-    if (!form || !success || !submitError || !submitBtn) return;
+    if (!form || !submitError || !submitBtn) return;
 
     submitError.hidden = true;
 
@@ -237,8 +217,6 @@ const formEndpoint = CONTACT_FORM_ENDPOINT;
       const json = await res.json().catch(() => ({}));
       if (res.ok && (json.ok === true || json.success === true)) {
         document.dispatchEvent(new CustomEvent('mindmotion:contact-success'));
-        form.hidden = true;
-        success.hidden = false;
       } else {
         throw new Error('submission failed');
       }
