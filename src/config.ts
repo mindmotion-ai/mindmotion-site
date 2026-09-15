@@ -13,7 +13,7 @@ export const SITE = {
   org: 'mindmotion-ai',
   title: `${LEGAL_NAME} | Runtime safety for AI-driven robots`,
   description:
-    'Software for safe robot deployment around people. MindMotion builds runtime safety software for AI-driven robots.',
+    'Software for safe robot deployment around people. MindMotion builds runtime safety software that keeps AI in control.',
   // Homepage hero headline, written as phrases. Each phrase starts on its
   // own line at every screen width.
   tagline: ['Safe robot deployment', 'around people'],
