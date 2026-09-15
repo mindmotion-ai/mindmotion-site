@@ -39,6 +39,13 @@ assertBrowserColorsMatchTheme();
 export default defineConfig({
   site: SITE.url,
   output: 'static',
+  // Keep whitespace in the HTML exactly as written in the source. Since
+  // Astro 7 the default ('jsx') removes line breaks around elements, which
+  // joins words to adjacent links and bold text wherever the source wraps
+  // a sentence onto a new line (for example "our" + <a>Terms of Service</a>
+  // would render as "ourTerms of Service"). `true` is the Astro 6 behaviour
+  // the site was written for.
+  compressHTML: true,
   vite: {
     plugins: [tailwindcss()],
   },
