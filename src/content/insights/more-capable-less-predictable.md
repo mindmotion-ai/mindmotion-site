@@ -43,6 +43,8 @@ For the foreseeable future, the same systems that are growing more capable will 
 
 For deployments where a robot moves around people, predictions about the AI's own behavior are not a sufficient basis for safety. The customer cannot absorb the residual risk. The insurer cannot price what cannot be bounded. The regulator cannot approve what cannot be audited.
 
+For the company deploying the robot, the same problem appears as a cost. A limit that must hold for the worst decision the AI might produce leaves the robot conservative nearly everywhere, moving slower than its own limits allow.
+
 ## Neither the cage nor the model is enough
 
 Inside a cage, safety came from three sources that no longer apply outside.
