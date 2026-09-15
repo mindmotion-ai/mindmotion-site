@@ -103,9 +103,9 @@ export const pageTitle = (page: string) => `${page} | ${SITE.legalName}`;
 
 // Insights on/off switch. When false, the Insights pages still build (so
 // they can be checked at their real URLs) but are hidden from visitors and
-// search engines: the nav and mobile menu omit the link, /insights/ pages
-// carry a noindex tag and are left out of the sitemap, robots.txt
-// disallows /insights/, and the RSS feed is empty.
+// search engines: the nav, the mobile menu, and the homepage omit their
+// Insights links, /insights/ pages carry a noindex tag and are left out of
+// the sitemap, robots.txt disallows /insights/, and the RSS feed is empty.
 export const INSIGHTS_ENABLED = true;
 
 // Public vanity URL where MindMotion's booking page lives. Stable across

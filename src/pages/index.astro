@@ -4,7 +4,20 @@ import Nav from '../components/Nav.astro';
 import Hero from '../components/Hero.astro';
 import Section from '../components/Section.astro';
 import Footer from '../components/Footer.astro';
-import { SITE } from '../config.ts';
+import { INSIGHTS_ENABLED, SITE } from '../config.ts';
+import { getInsightPosts } from '../lib/insights.ts';
+
+// Insights post linked below "Why now", by file name. The link shows the
+// post's title and is left out while Insights is switched off.
+const WHY_NOW_POST = 'robotics-is-where-aviation-was-in-1988';
+const whyNowPost = INSIGHTS_ENABLED
+  ? (await getInsightPosts()).find((post) => post.id === WHY_NOW_POST)
+  : undefined;
+if (INSIGHTS_ENABLED && !whyNowPost) {
+  throw new Error(
+    `The homepage links to the Insights post "${WHY_NOW_POST}", but no published post has that file name.`,
+  );
+}
 ---
 
 <Base title={SITE.title} description={SITE.description}>
@@ -79,15 +92,16 @@ import { SITE } from '../config.ts';
 
     <Section id="why-now" heading="Why now">
       <p>
-        AI-driven robots are challenging to deploy safely around people at
-        scale. Safety at scale requires an execution boundary that separates
-        decision-making from execution.
-      </p>
-      <p>
         Aviation, automotive, and computing each reached a moment when
-        execution had to be separated from decision-making. Robotics is at
-        the same moment.
+        execution had to be separated from decision-making. In each case, safe
+        deployment at scale followed the separation, not the other way around.
+        Robotics is at the same moment.
       </p>
+      {whyNowPost && (
+        <p>
+          <a href={`/insights/${whyNowPost.id}/`} class="text-accent font-semibold hover:text-link">{whyNowPost.data.title}</a>
+        </p>
+      )}
     </Section>
   </main>
   <Footer />

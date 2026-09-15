@@ -45,7 +45,7 @@ place and missed in another.
 |---|---|
 | Company name, legal name, site URL, homepage title and description, hero text, mission statement | `SITE` in [`src/config.ts`](src/config.ts) |
 | Browser-tab title format for all other pages | `pageTitle()` in `src/config.ts` |
-| Insights on/off switch (hides Insights from the nav, search engines, sitemap, robots.txt, and RSS when off) | `INSIGHTS_ENABLED` in `src/config.ts` |
+| Insights on/off switch (hides Insights from the nav, the homepage, search engines, sitemap, robots.txt, and RSS when off) | `INSIGHTS_ENABLED` in `src/config.ts` |
 | Booking link behind `/meet`, contact form endpoint, contact email | `MEET_URL`, `CONTACT_FORM_ENDPOINT`, `CONTACT_EMAIL` in `src/config.ts` |
 | Logo, default social-share image, publisher logo, home-screen icons | `ASSETS` in `src/config.ts` |
 | AI-training crawlers blocked in robots.txt | `AI_TRAINING_CRAWLERS` in `src/config.ts` |
