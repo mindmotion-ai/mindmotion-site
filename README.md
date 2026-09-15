@@ -28,6 +28,53 @@ builds the site with the
 [`withastro/action`](https://github.com/withastro/action) workflow and
 publishes to GitHub Pages.
 
+## Where settings live
+
+Every value that describes the site (its identity, switches, external
+addresses, colours, and layout sizes) is defined once, in one of the
+locations below, and referenced everywhere else. When changing such a value,
+edit it there; when adding one, add it there rather than typing the value
+into a page or component. This keeps a change from being applied in one
+place and missed in another.
+
+| What | Where |
+|---|---|
+| Company name, legal name, site URL, homepage title and description, hero text, mission statement | `SITE` in [`src/config.ts`](src/config.ts) |
+| Browser-tab title format for all other pages | `pageTitle()` in `src/config.ts` |
+| Insights on/off switch (hides Insights from the nav, search engines, sitemap, robots.txt, and RSS when off) | `INSIGHTS_ENABLED` in `src/config.ts` |
+| Booking link behind `/meet`, contact form endpoint, contact email | `MEET_URL`, `CONTACT_FORM_ENDPOINT`, `CONTACT_EMAIL` in `src/config.ts` |
+| Logo, default social-share image, publisher logo, home-screen icons | `ASSETS` in `src/config.ts` |
+| AI-training crawlers blocked in robots.txt | `AI_TRAINING_CRAWLERS` in `src/config.ts` |
+| security.txt expiry date | `SECURITY_TXT` in `src/config.ts` |
+| Brand colours, and the tints, lines, shadows, and opacities derived from them | `@theme` blocks in [`src/styles/global.css`](src/styles/global.css) |
+| Layout sizes: content width, side gutter, page top padding, logo height | `@theme` and `@utility` blocks in `src/styles/global.css` |
+| Theme colours for the browser toolbar and web app manifest (which cannot read CSS) | `BROWSER_COLORS` in `src/config.ts`; the build fails if they differ from `--color-accent` or `--color-bg` |
+| Insights post frontmatter fields | [`src/content.config.ts`](src/content.config.ts) |
+
+Files generated at build time from these settings rather than stored as
+static files: `robots.txt`, `.well-known/security.txt`, and
+`site.webmanifest` (in [`src/pages/`](src/pages/)), `rss.xml`, and the
+sitemap (configured in [`astro.config.mjs`](astro.config.mjs)).
+
+Deliberate exceptions:
+
+- The body text of the Privacy Policy and Terms of Service is written out
+  in full, including the company name and URL. A settings change must never
+  silently alter a published legal document; those documents change only
+  through an intentional edit, which triggers the effective-date hook
+  described below.
+- The print stylesheet at the end of `global.css` uses plain black and
+  white regardless of the brand colours.
+- A value used by a single component for its own look (for example the
+  hero headline font size) stays in that component.
+
+## Recurring maintenance
+
+- **security.txt expiry:** the date in `SECURITY_TXT` must stay in the
+  future (recommended: less than a year ahead). Renew it before it passes.
+- **AI-training crawler list:** new crawlers appear over time; review
+  `AI_TRAINING_CRAWLERS` at least yearly.
+
 ## Repository conventions
 
 - Commits that touch [`src/pages/privacy.astro`](src/pages/privacy.astro)
