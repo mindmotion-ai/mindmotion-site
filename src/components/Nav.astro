@@ -3,8 +3,8 @@ import { SITE, ASSETS, INSIGHTS_ENABLED } from '../config.ts';
 ---
 
 <header class="sticky top-0 z-40 bg-nav backdrop-blur">
-  <nav class="px-5 sm:px-6 py-5" aria-label="Primary">
-    <div class="max-w-[1080px] mx-auto flex items-center justify-between">
+  <nav class="page-gutter py-5" aria-label="Primary">
+    <div class="max-w-content mx-auto flex items-center justify-between">
       <a
         href="/"
         class="flex items-center gap-3 transition-opacity duration-150 hover:opacity-(--opacity-hover-fade)"
@@ -15,7 +15,7 @@ import { SITE, ASSETS, INSIGHTS_ENABLED } from '../config.ts';
           alt=""
           width="48"
           height="48"
-          class="h-12 w-auto"
+          class="h-logo w-auto"
         />
         <span class="font-semibold text-xl text-accent">
           {SITE.name}
@@ -70,8 +70,8 @@ import { SITE, ASSETS, INSIGHTS_ENABLED } from '../config.ts';
   aria-label="Site menu"
   hidden
 >
-  <div class="px-5 sm:px-6 py-5">
-    <div class="max-w-[1080px] mx-auto flex items-center justify-between">
+  <div class="page-gutter py-5">
+    <div class="max-w-content mx-auto flex items-center justify-between">
       <a
         href="/"
         class="flex items-center gap-3"
@@ -82,7 +82,7 @@ import { SITE, ASSETS, INSIGHTS_ENABLED } from '../config.ts';
           alt=""
           width="48"
           height="48"
-          class="h-12 w-auto"
+          class="h-logo w-auto"
         />
         <span class="font-semibold text-xl text-accent">{SITE.name}</span>
       </a>
@@ -107,11 +107,11 @@ import { SITE, ASSETS, INSIGHTS_ENABLED } from '../config.ts';
       </button>
     </div>
   </div>
-  <div class="px-5 sm:px-6 mt-8">
-    <div class="max-w-[1080px] mx-auto flex gap-3">
+  <div class="page-gutter mt-8">
+    <div class="max-w-content mx-auto flex gap-3">
       <!-- Invisible spacer matching the logo footprint so menu items align
            horizontally with the "MindMotion" wordmark in the header above. -->
-      <div class="h-12 w-12 shrink-0" aria-hidden="true"></div>
+      <div class="h-logo w-logo shrink-0" aria-hidden="true"></div>
       <ul class="flex flex-col gap-2 flex-1">
         <li><a href="/mission/" class="block py-3 text-xl font-semibold text-accent hover:text-link">Mission</a></li>
         {INSIGHTS_ENABLED && (

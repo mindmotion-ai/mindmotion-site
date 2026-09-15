@@ -39,8 +39,8 @@ const paddingClass = (() => {
   // Page-title sections (h1) get larger top padding to match PageHeader compact,
   // so titles start at the same vertical position across all pages.
   if (headingLevel === 1) {
-    if (density === 'compact') return 'pt-16 md:pt-24 pb-8 md:pb-10';
-    return 'pt-16 md:pt-24 pb-10 md:pb-16';
+    if (density === 'compact') return 'page-top pb-8 md:pb-10';
+    return 'page-top pb-10 md:pb-16';
   }
   return density === 'compact' ? 'py-8 md:py-10' : 'py-10 md:py-16';
 })();
@@ -49,9 +49,9 @@ const paddingClass = (() => {
 <section
   id={id}
   hidden={hidden}
-  class={`reveal ${paddingClass} px-5 sm:px-6 ${variantClass} ${classProp ?? ''}`}
+  class={`reveal ${paddingClass} page-gutter ${variantClass} ${classProp ?? ''}`}
 >
-  <div class="max-w-[1080px] mx-auto">
+  <div class="max-w-content mx-auto">
     {heading && (
       <HeadingTag class={headingClass}>
         {heading}

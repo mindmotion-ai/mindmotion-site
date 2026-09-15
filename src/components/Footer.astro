@@ -3,8 +3,8 @@ import { SITE, ASSETS } from '../config.ts';
 const year = new Date().getFullYear();
 ---
 
-<footer class="footer-tint pt-12 md:pt-16 pb-14 px-5 sm:px-6 mt-4">
-  <div class="max-w-[1080px] mx-auto flex flex-col items-center gap-6 text-center">
+<footer class="footer-tint pt-12 md:pt-16 pb-14 page-gutter mt-4">
+  <div class="max-w-content mx-auto flex flex-col items-center gap-6 text-center">
     <ul class="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-base">
       <li><a href="/privacy/" class="text-accent hover:text-link">Privacy</a></li>
       <li><a href="/terms/" class="text-accent hover:text-link">Terms</a></li>
@@ -16,7 +16,7 @@ const year = new Date().getFullYear();
         alt=""
         width="48"
         height="48"
-        class="h-12 w-auto"
+        class="h-logo w-auto"
       />
     </a>
     <p class="text-base text-accent-2">© {year} {SITE.legalName}</p>
@@ -28,7 +28,7 @@ const year = new Date().getFullYear();
     background: linear-gradient(
       to bottom,
       transparent 0,
-      var(--color-tint-footer) 50px,
+      var(--color-tint-footer) var(--spacing-tint-fade),
       var(--color-tint-footer) 100%
     );
   }

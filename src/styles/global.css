@@ -12,6 +12,22 @@
   --color-accent-2: #1F3D5C;
   --color-link: #3F7CAC;
 
+  /* Layout. Sizes in rem scale with the root font size (18px on phones,
+     27px from 768px up; see html below). */
+  /* Maximum width of the content column (class max-w-content), shared by
+     the nav, every section, posts, and the footer so edges line up. */
+  --container-content: 1080px;
+  /* Side padding that keeps content off the screen edges, below and from
+     the 640px breakpoint (used through the page-gutter utility). */
+  --spacing-gutter: 1.25rem;
+  --spacing-gutter-sm: 1.5rem;
+  /* Top padding of every page's first block (page-top utility), so page
+     titles start at the same height on every page. */
+  --spacing-page-top: 4rem;
+  --spacing-page-top-md: 6rem;
+  /* Height of the logo in the nav, mobile menu, and footer (class h-logo). */
+  --spacing-logo: 3rem;
+
   --font-sans: "Inter Variable", "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", system-ui, sans-serif;
 }
 
@@ -39,6 +55,9 @@
   --color-hero-glow-fade: color-mix(in oklab, var(--color-accent) 2%, transparent);
   /* Background behind inline code in posts. */
   --color-code-bg: color-mix(in oklab, var(--color-accent) 6%, transparent);
+  /* Length of the soft fade at the top and bottom edges of tinted
+     sections and at the top of the footer. */
+  --spacing-tint-fade: 50px;
 
   /* Contact form field edge, at rest and when focused. */
   --shadow-input: 0 4px 16px color-mix(in oklab, var(--color-accent) 12%, transparent);
@@ -124,11 +143,11 @@
     position: absolute;
     left: 0;
     right: 0;
-    height: 50px;
+    height: var(--spacing-tint-fade);
     pointer-events: none;
   }
   .tinted-section::before {
-    top: -50px;
+    top: calc(var(--spacing-tint-fade) * -1);
     background: linear-gradient(
       to bottom,
       transparent 0,
@@ -136,12 +155,42 @@
     );
   }
   .tinted-section::after {
-    bottom: -50px;
+    bottom: calc(var(--spacing-tint-fade) * -1);
     background: linear-gradient(
       to bottom,
       var(--color-tint) 0,
       transparent 100%
     );
+  }
+}
+
+/* Layout utilities. Each bundles a layout token with its breakpoint step,
+   so a component cannot pick up one step and miss the other. */
+
+/* Side padding for every full-width band: nav, mobile menu, hero,
+   sections, posts, 404, footer. */
+@utility page-gutter {
+  padding-inline: var(--spacing-gutter);
+  @variant sm {
+    padding-inline: var(--spacing-gutter-sm);
+  }
+}
+
+/* Cancels page-gutter on phones so a child (e.g. the homepage diagram)
+   reaches the screen edges; from 640px up the child stays in the column. */
+@utility page-bleed {
+  margin-inline: calc(var(--spacing-gutter) * -1);
+  @variant sm {
+    margin-inline: 0;
+  }
+}
+
+/* Top padding of the first block on every page (PageHeader, page-title
+   Sections, posts). */
+@utility page-top {
+  padding-top: var(--spacing-page-top);
+  @variant md {
+    padding-top: var(--spacing-page-top-md);
   }
 }
 
