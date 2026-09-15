@@ -5,6 +5,9 @@ export const SITE = {
   // Wordmark shown in the nav and used in aria labels, og:site_name, and
   // JSON-LD. Currently the legal name, for wordmark protection.
   name: LEGAL_NAME,
+  // Short name shown under the icon when the site is saved to a phone's
+  // home screen (web app manifest), where space is limited.
+  shortName: 'MindMotion',
   // Legal entity name, used in page titles and the footer copyright.
   legalName: LEGAL_NAME,
   org: 'mindmotion-ai',
@@ -24,6 +27,9 @@ export const SITE = {
 
 // Brand image files, as paths from the site root (files live in public/).
 // Replace a file here rather than editing each place it is used.
+const APP_ICON_192 = '/android-chrome-192x192.png';
+const APP_ICON_512 = '/android-chrome-512x512.png';
+
 export const ASSETS = {
   // Logo shown in the nav, the mobile menu, and the footer, and named as
   // the organization logo in the homepage JSON-LD.
@@ -40,10 +46,24 @@ export const ASSETS = {
   // Square raster logo named as the publisher in Insights post JSON-LD.
   // Raster because search engines do not accept SVG there.
   publisherLogo: {
-    src: '/android-chrome-512x512.png',
+    src: APP_ICON_512,
     width: 512,
     height: 512,
   },
+  // Home-screen icons listed in the web app manifest.
+  appIcons: [
+    { src: APP_ICON_192, sizes: '192x192', type: 'image/png' },
+    { src: APP_ICON_512, sizes: '512x512', type: 'image/png' },
+  ],
+} as const;
+
+// security.txt (served at /.well-known/security.txt, standard RFC 9116)
+// tells security researchers how to report a vulnerability. Its Expires
+// date must stay in the future, and the standard recommends less than a
+// year ahead: renew it before it passes.
+export const SECURITY_TXT = {
+  expires: '2027-01-01T00:00:00.000Z',
+  preferredLanguages: 'en',
 } as const;
 
 // Colours used outside CSS: the browser toolbar colour (<meta name=

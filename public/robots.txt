@@ -1,4 +1,0 @@
-User-agent: *
-Disallow: /meet
-
-Sitemap: https://mindmotion.ai/sitemap-index.xml
