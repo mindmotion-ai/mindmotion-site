@@ -22,6 +22,30 @@ export const SITE = {
   mission: 'Make robots safe to deploy around people',
 } as const;
 
+// Brand image files, as paths from the site root (files live in public/).
+// Replace a file here rather than editing each place it is used.
+export const ASSETS = {
+  // Logo shown in the nav, the mobile menu, and the footer, and named as
+  // the organization logo in the homepage JSON-LD.
+  logo: '/logo-mindmotion.svg',
+  // Default social-share (Open Graph / Twitter card) image, used by any
+  // page or post that does not set its own. width/height must match the
+  // actual file.
+  ogImage: {
+    src: '/og-default.png',
+    alt: 'MindMotion: runtime safety for AI-driven robots',
+    width: 1200,
+    height: 630,
+  },
+  // Square raster logo named as the publisher in Insights post JSON-LD.
+  // Raster because search engines do not accept SVG there.
+  publisherLogo: {
+    src: '/android-chrome-512x512.png',
+    width: 512,
+    height: 512,
+  },
+} as const;
+
 // Browser-tab and search-result title for every page other than the
 // homepage (which uses SITE.title). Change the format here, not per page.
 export const pageTitle = (page: string) => `${page} | ${SITE.legalName}`;

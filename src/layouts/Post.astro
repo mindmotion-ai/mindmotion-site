@@ -2,7 +2,7 @@
 import Base from './Base.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
-import { SITE, pageTitle } from '../config.ts';
+import { SITE, ASSETS, pageTitle } from '../config.ts';
 
 interface Props {
   title: string;
@@ -41,9 +41,9 @@ const articleJsonLd = {
     name: SITE.name,
     logo: {
       '@type': 'ImageObject',
-      url: new URL('/android-chrome-512x512.png', SITE.url).toString(),
-      width: 512,
-      height: 512,
+      url: new URL(ASSETS.publisherLogo.src, SITE.url).toString(),
+      width: ASSETS.publisherLogo.width,
+      height: ASSETS.publisherLogo.height,
     },
   },
   mainEntityOfPage: new URL(`/insights/${slug}/`, SITE.url).toString(),
@@ -79,7 +79,7 @@ const breadcrumbJsonLd = {
   title={pageTitle(title)}
   description={description}
   canonicalPath={`/insights/${slug}/`}
-  ogImage={image ?? '/og-default.png'}
+  ogImage={image ?? ASSETS.ogImage.src}
   type="article"
 >
   <Nav />

@@ -1,7 +1,7 @@
 ---
 import '@fontsource-variable/inter';
 import '../styles/global.css';
-import { SITE } from '../config.ts';
+import { SITE, ASSETS } from '../config.ts';
 
 interface Props {
   title?: string;
@@ -19,10 +19,10 @@ const {
   title = SITE.title,
   description = SITE.description,
   canonicalPath = Astro.url.pathname,
-  ogImage = '/og-default.png',
-  ogImageAlt = 'MindMotion: runtime safety for AI-driven robots',
-  ogImageWidth = 1200,
-  ogImageHeight = 630,
+  ogImage = ASSETS.ogImage.src,
+  ogImageAlt = ASSETS.ogImage.alt,
+  ogImageWidth = ASSETS.ogImage.width,
+  ogImageHeight = ASSETS.ogImage.height,
   type = 'website',
   noindex = false,
 } = Astro.props;
@@ -36,7 +36,7 @@ const organizationJsonLd = {
   name: SITE.name,
   legalName: SITE.legalName,
   url: SITE.url,
-  logo: new URL('/logo-mindmotion.svg', SITE.url).toString(),
+  logo: new URL(ASSETS.logo, SITE.url).toString(),
   sameAs: [`https://www.linkedin.com/company/${SITE.org}`],
 };
 ---

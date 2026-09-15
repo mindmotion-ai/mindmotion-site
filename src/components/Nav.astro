@@ -1,5 +1,5 @@
 ---
-import { SITE, INSIGHTS_ENABLED } from '../config.ts';
+import { SITE, ASSETS, INSIGHTS_ENABLED } from '../config.ts';
 ---
 
 <header class="sticky top-0 z-40 bg-bg/85 backdrop-blur">
@@ -11,7 +11,7 @@ import { SITE, INSIGHTS_ENABLED } from '../config.ts';
         aria-label={`${SITE.name} home`}
       >
         <img
-          src="/logo-mindmotion.svg"
+          src={ASSETS.logo}
           alt=""
           width="48"
           height="48"
@@ -78,7 +78,7 @@ import { SITE, INSIGHTS_ENABLED } from '../config.ts';
         aria-label={`${SITE.name} home`}
       >
         <img
-          src="/logo-mindmotion.svg"
+          src={ASSETS.logo}
           alt=""
           width="48"
           height="48"
