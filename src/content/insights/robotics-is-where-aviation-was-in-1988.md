@@ -95,6 +95,8 @@ In each case, the conclusion was the same. Improving the decision-making system 
 
 In each case, that layer was given a defined operational envelope and was given the job of holding the system inside it. In each case, the layer was independent enough to remain in place when the decision-making system was updated, retrained, or replaced. In each case, safe deployment at scale followed the separation, not the other way around.
 
+In each case, the separation also freed the decision-making system. Pilots could fly the aircraft to its limits. Drivers did not have to become better to avoid a crash. Software did not have to be perfect to be useful.
+
 In each case, the separation also produced something the prior arrangement had not: a system insurable at scale. The structural property and the underwriting property are the same property viewed from different sides.
 
 ## Why now, for robotics
