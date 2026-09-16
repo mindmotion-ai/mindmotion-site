@@ -1,6 +1,6 @@
 ---
 title: "Measures, records, bounds"
-description: "The three structural functions of runtime safety software for AI-driven robots, and what makes them work when the AI is updated or replaced."
+description: "The three functions of runtime safety software, what the record proves after an incident, and why it must stay independent of the AI."
 date: 2026-05-20
 draft: false
 tags:
