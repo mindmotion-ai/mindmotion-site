@@ -23,9 +23,9 @@ The decision-making system inside a modern robot is increasingly an AI model tha
 
 The same separation aviation made in 1988 is what robotics needs now, for the same reasons.
 
-This is not a metaphor. It is a pattern that has appeared in every domain that has learned to deploy a powerful, evolving decision-making system around people.
+This is not a metaphor. It is a pattern that has appeared in domain after domain, wherever a powerful, evolving decision-making system had to be deployed around people.
 
-This post traces the pattern through three of those domains: aviation, automotive, and computing. The recurrence is consistent enough to be treated as a structural condition for the trustworthy deployment of any capable, evolving decision system, including AI-driven robots.
+This post traces the pattern through three of those domains: aviation, automotive, and computing. In all three cases, separation became the condition for deploying a capable, evolving decision-making system around people.
 
 ## Aviation: from autopilot to envelope protection
 
@@ -61,7 +61,7 @@ It brakes individual wheels or reduces engine power to bring the vehicle back in
 
 The driver is not required to become a better driver. The intervention layer sits below the driver. The safety claim is not about the driver's correctness. It is about the layer below the driver holding the vehicle inside a physically achievable envelope.
 
-By 2011, electronic stability control was mandated on new passenger cars in both the European Union and the United States. The US National Highway Traffic Safety Administration estimated that stability control prevents thousands of fatalities each year at full fleet penetration.
+By 2011, electronic stability control was being mandated on new passenger cars in the European Union and the United States. The US National Highway Traffic Safety Administration estimated that stability control prevents thousands of fatalities each year at full fleet penetration.
 
 The mechanism is the structural separation, not a smarter driver.
 
@@ -107,7 +107,7 @@ The AI controlling a modern robot is increasingly a learned model that grows mor
 
 The consequences of failure are about to become visible at a scale that robotics has not seen before.
 
-The separation move is the same as in the three earlier domains. The AI remains free to learn, adapt, and improve. The execution layer underneath the AI measures, records, and bounds what the robot does, regardless of what the AI decides or how it evolves.
+The separation move is the same as in the three earlier domains. The AI remains free to learn, adapt, and improve. At the execution boundary, the software measures, records, and bounds what the robot does, regardless of what the AI decides or how it evolves.
 
 The envelope is declared by the company deploying the robot, the system integrator, or the safety certifier. The boundary holds.
 
