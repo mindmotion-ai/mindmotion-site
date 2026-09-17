@@ -8,65 +8,108 @@ tags:
   - safety
   - physical-ai
 ---
+In 1961, a hydraulic arm went to work at a General Motors plant in New Jersey.
 
-Robots driven by AI are more capable than hand-coded robots have ever been. They are also less predictable in what they will do.
+It lifted hot castings out of a die-casting press and stacked them. It was the first industrial robot to work on a production line.
 
-The two properties come from the same place. The same model breadth that allows an AI to handle a wide range of situations is what makes its behavior harder to predict in any specific one.
+It did one job, in one place, over and over.
 
-This is not a defect that more training will eliminate. It is a property of how AI models work.
+Safety came from the arrangement around it. People stayed out of the space the arm could reach.
 
-For most of the history of industrial robotics, this tension did not have to be resolved. Safety was a property of context. Robots worked inside steel cages, behind light curtains, on fixed paths, executing hand-coded logic with predictable failure modes.
+That arrangement became the model for the next half century.
 
-The cage did the heavy lifting. Behavior could be wrong, but the cage contained it.
+In 1984, the United States National Institute for Occupational Safety and Health published an alert on preventing robot-related injuries to workers.
 
-That arrangement is dissolving. Humanoid systems, collaborative arms, autonomous mobile platforms, surgical assistants, and warehouse robots are moving out of fenced cells and into shared spaces.
+The recommendations were physical. Barriers around the robot. Gates with electrical interlocks. Sensors that stop the robot when a person crosses the line.
 
-The fence does not come with them.
+Two years later the first American robot safety standard, ANSI/RIA R15.06, wrote the principle down: a safeguarded space that people do not enter while the robot runs.
 
-The robots are simultaneously more capable than they used to be and less predictable than they used to be. Safety, in this new arrangement, can no longer be inherited from the environment. It has to be a property of the system itself.
+The cage did the heavy lifting. The robot's behavior could be wrong, but the cage contained it.
+
+## Robots are leaving the cage
+
+The old picture of a robot is dissolving.
+
+Humanoid robots, collaborative arms, autonomous mobile platforms, surgical assistants, and warehouse robots are moving out of fenced cells and into shared spaces around people.
+
+The cage does not follow the robots out.
+
+The standards have followed them instead. In 2016, ISO/TS 15066 described what a robot sharing space with a person has to respect once separation is no longer available. It set out permissible contact forces and pressures for each region of the human body.
+
+In 2025, new editions of ISO 10218 took most of that content into the main standards for robots and for robot applications.
+
+Safety can no longer be inherited from the surroundings. It has to become a property of the robot that moves.
 
 ## What "around people" means in practice
 
-The phrase "around people" describes a wide range of operating contexts that share a common feature: at some point in the task, a robot's motion could matter to a person who has not opted into being part of that task.
+"Around people" covers a wide range of settings with one feature in common.
+
+At some point, the motion of a robot could matter to a person who never chose to be there.
 
 A humanoid in a warehouse navigating around an order picker. A surgical assistant in an operating room next to a sterile field. A mobile robot in a hospital corridor passing a wheelchair. A cobot on an assembly line handing a part to a colleague. A delivery robot crossing a pedestrian path.
 
-In each case, the company deploying the robot declares an envelope: a region of permitted motion, a set of permitted contacts, a set of permitted overrides.
+In each case, the company deploying the robot declares an envelope: a region of permitted motion and a set of permitted contacts.
 
 The cage is gone. The envelope is the only thing in its place.
 
-## The tradeoff is structural
+## Capability and unpredictability come from the same place
 
-Better data and larger models shift the balance between capability and predictability. They do not collapse it.
+Robots driven by AI can do more than hand-coded robots ever could. As they take on continuously improving artificial brains, they become more capable but less predictable in what they do.
 
-For the foreseeable future, the same systems that are growing more capable will continue to be less predictable in what they will do.
+The two properties share a cause.
 
-For deployments where a robot moves around people, predictions about the AI's own behavior are not a sufficient basis for safety. The customer cannot absorb the residual risk. The insurer cannot price what cannot be bounded. The regulator cannot approve what cannot be audited.
+The same generality that lets an AI handle new situations also makes what it will do harder to predict.
 
-For the company deploying the robot, the same problem appears as a cost. A limit that must hold for the worst decision the AI might produce leaves the robot conservative nearly everywhere, moving slower than its own limits allow.
+This is not a defect that more training will eliminate. Better data and larger models can shift the balance, but they cannot remove the cause.
+
+## Where the cost lands
+
+For a robot that moves around people, predictions about the behavior of the AI are not a sufficient basis for safety.
+
+The insurer cannot price what cannot be bounded. The regulator cannot approve what cannot be audited.
+
+For the company deploying the robot, the same problem arrives as a cost.
+
+A limit that has to hold for the worst decision the AI might produce leaves the robot conservative nearly everywhere, moving slower than it safely could.
 
 ## Neither the cage nor the model is enough
 
-Inside a cage, safety came from three sources that no longer apply outside.
+Inside a cage, safety came from three sources.
 
-The cage itself was a passive barrier. The environment was structured, with fixed lighting, fixed surfaces, a fixed catalog of objects, and a known starting state. The controller was specifically engineered for a defined task with known failure modes.
+The cage was a barrier. The environment was structured, with fixed lighting, fixed surfaces, a known catalog of objects, and a known starting state. The controller was engineered for one task, with known failure modes.
 
-Outside the cage, none of these hold. The barrier is gone. The environment is the world. The controller is an AI model whose specific failure modes cannot be enumerated in advance.
+Outside the cage, none of the three holds.
 
-A natural response is to make the AI itself safer. Train it on more diverse data. Add safety-relevant examples to its training. Filter its outputs. Run more evaluations.
+There is no barrier. The environment is the world. The controller is an AI model whose specific failure modes cannot be listed in advance.
 
-These approaches are useful and worth pursuing. But they cannot, by themselves, provide the kind of safety claim a deployment around people requires.
+A natural response is to make the AI itself safer. Train it on more diverse data. Add safety-relevant examples. Filter the outputs. Run more evaluations.
 
-A safety property implemented inside the AI is a property of that specific AI. Every time the model is updated, the property has to be re-established. Every time the deployment context changes, the property has to be revisited.
+These approaches are useful and worth pursuing. They cannot, on their own, carry the safety claim a deployment around people requires.
+
+A safety property built inside the AI is a property of that particular AI.
+
+Every update to the model reopens the safety question. Every change of deployment context reopens it again.
 
 The same iteration that makes the system more capable invalidates its prior safety claims. The claim does not last.
 
-Neither source of safety transfers. The cage cannot follow the robot out into shared space. The AI cannot anchor a durable safety claim because it is the thing being updated.
+Regulators have begun to write that problem down.
+
+When the European Union adopted its Machinery Regulation in 2023, it put safety components that keep learning where an outside body, not the maker, has to assess them.
+
+Whether a safety claim survives the next update is no longer only an engineering question.
+
+## What has to hold
+
+The cage cannot follow the robot out of the cell.
+
+The AI cannot anchor a lasting safety claim, because the AI is the thing being updated.
 
 Something else has to hold.
 
-## The structural shift
-
-What is needed is a layer that measures, records, and bounds what the robot does, regardless of what the AI decides or how it evolves.
+What is needed is a layer of runtime safety software that measures, records, and bounds what the robot does, regardless of what the AI decides or how it evolves.
 
 A layer that sits between the AI's decisions and the robot's motion, structurally separate from both, providing the independent safety function neither alone can provide.
+
+In 1961, safety was a fence the arm could not reach past.
+
+The robots now moving into warehouses, corridors and operating rooms carry no fence with them. The layer is what takes its place: it travels with the robot, and it holds while the AI keeps changing.
