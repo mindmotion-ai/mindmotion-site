@@ -5,7 +5,7 @@ import Hero from '../components/Hero.astro';
 import Section from '../components/Section.astro';
 import Footer from '../components/Footer.astro';
 import PostLink from '../components/PostLink.astro';
-import { INSIGHTS_ENABLED, SITE } from '../config.ts';
+import { ASSETS, INSIGHTS_ENABLED, SITE } from '../config.ts';
 import { getInsightPosts } from '../lib/insights.ts';
 
 // The Insights post each homepage section links to, by file name. Every
@@ -72,16 +72,16 @@ const whyNowPost = sectionPost(SECTION_POSTS.whyNow);
           <!-- 4:5 portrait, brand-accent strokes on transparent bg, for phones. -->
           <source
             media="(max-width: 639px)"
-            srcset="/execution-boundary-mobile.webp"
-            width="1200"
-            height="1500"
+            srcset={ASSETS.boundaryFigure.narrow.src}
+            width={ASSETS.boundaryFigure.narrow.width}
+            height={ASSETS.boundaryFigure.narrow.height}
           />
           <!-- Default: 16:9 landscape, sized for tablet + desktop. -->
           <img
-            src="/execution-boundary.webp"
-            alt="The AI's decision flows through the execution boundary and emerges as motion at the robot"
-            width="1920"
-            height="1080"
+            src={ASSETS.boundaryFigure.wide.src}
+            alt={ASSETS.boundaryFigure.alt}
+            width={ASSETS.boundaryFigure.wide.width}
+            height={ASSETS.boundaryFigure.wide.height}
             loading="lazy"
             decoding="async"
             class="w-full h-auto"

@@ -47,7 +47,7 @@ place and missed in another.
 | Browser-tab title format for all other pages | `pageTitle()` in `src/config.ts` |
 | Insights on/off switch (hides Insights from the nav, the homepage, search engines, sitemap, robots.txt, and RSS when off) | `INSIGHTS_ENABLED` in `src/config.ts` |
 | Booking link behind `/meet`, contact form endpoint, contact email | `MEET_URL`, `CONTACT_FORM_ENDPOINT`, `CONTACT_EMAIL` in `src/config.ts` |
-| Logo, default social-share image, publisher logo, home-screen icons | `ASSETS` in `src/config.ts` |
+| Logo, default social-share image, publisher logo, home-screen icons, homepage figure | `ASSETS` in `src/config.ts` |
 | AI-training crawlers blocked in robots.txt | `AI_TRAINING_CRAWLERS` in `src/config.ts` |
 | security.txt expiry date | `SECURITY_TXT` in `src/config.ts` |
 | Brand colours, and the tints, lines, shadows, and opacities derived from them | `@theme` blocks in [`src/styles/global.css`](src/styles/global.css) |
@@ -59,6 +59,18 @@ Files generated at build time from these settings rather than stored as
 static files: `robots.txt`, `.well-known/security.txt`, and
 `site.webmanifest` (in [`src/pages/`](src/pages/)), `rss.xml`, and the
 sitemap (configured in [`astro.config.mjs`](astro.config.mjs)).
+
+Two notes on the files in `public/`:
+
+- The homepage figure is served as lossless WebP (`execution-boundary.webp`
+  and `execution-boundary-mobile.webp`), which is about 40% smaller than the
+  same drawing as PNG. The PNG masters, and the untouched drawings they came
+  from, are kept in the private source repository under `visuals/`, where the
+  current pair is undated and superseded versions carry the date they were
+  first published.
+- `CNAME` carries the custom domain for GitHub Pages. Nothing in the site
+  references it, so a search for unused files will flag it; deleting it would
+  take the site off mindmotion.ai.
 
 Deliberate exceptions:
 

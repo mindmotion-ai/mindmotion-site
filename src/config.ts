@@ -43,6 +43,16 @@ export const ASSETS = {
     width: 1200,
     height: 630,
   },
+  // Homepage figure: the AI's decision crossing the execution boundary and
+  // emerging as motion. Two crops of one drawing, landscape for tablet and
+  // desktop and portrait for phones, served as lossless WebP. The PNG
+  // masters and the untouched originals live in the source repository under
+  // `visuals/`. width/height must match the actual files.
+  boundaryFigure: {
+    wide: { src: '/execution-boundary.webp', width: 1920, height: 1080 },
+    narrow: { src: '/execution-boundary-mobile.webp', width: 1200, height: 1500 },
+    alt: "The AI's decision flows through the execution boundary and emerges as motion at the robot",
+  },
   // Square raster logo named as the publisher in Insights post JSON-LD.
   // Raster because search engines do not accept SVG there.
   publisherLogo: {
