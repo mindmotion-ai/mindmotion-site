@@ -1,7 +1,7 @@
 ---
 title: "Safety that does not cost throughput"
 description: "A robot loses throughput not to safety, but to decisions that cannot keep up with physics."
-date: 2026-09-15
+date: 2026-09-17
 draft: false
 order: 3
 tags:
