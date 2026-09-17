@@ -3,6 +3,7 @@ title: "Safety that does not cost throughput"
 description: "Why the gap between what a robot is allowed to do and what it actually does is not the price of safety, and what closes it."
 date: 2026-09-15
 draft: false
+order: 3
 tags:
   - how-it-works
   - throughput

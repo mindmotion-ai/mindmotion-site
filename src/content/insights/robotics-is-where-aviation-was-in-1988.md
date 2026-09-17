@@ -3,6 +3,7 @@ title: "Robotics is where aviation was in 1988"
 description: "Aviation, automotive, and computing each reached a moment when execution had to be separated from decision-making. Robotics is there now."
 date: 2026-05-20
 draft: false
+order: 4
 tags:
   - why-now
   - precedent

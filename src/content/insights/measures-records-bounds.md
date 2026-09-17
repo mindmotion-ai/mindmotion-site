@@ -3,6 +3,7 @@ title: "Measures, records, bounds"
 description: "The three functions of runtime safety software, what the record proves after an incident, and why it must stay independent of the AI."
 date: 2026-05-20
 draft: false
+order: 2
 tags:
   - what-we-do
   - architecture

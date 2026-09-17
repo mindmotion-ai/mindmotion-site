@@ -3,6 +3,7 @@ title: "More capable, less predictable"
 description: "Why the capability and the unpredictability of AI-driven robots come from the same place, and why safety inside the AI is not enough."
 date: 2026-05-20
 draft: false
+order: 1
 tags:
   - the-problem
   - safety
