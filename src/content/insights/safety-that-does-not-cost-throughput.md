@@ -1,6 +1,6 @@
 ---
 title: "Safety that does not cost throughput"
-description: "Why the gap between what a robot is allowed to do and what it actually does is not the price of safety, and what closes it."
+description: "Anti-lock brakes add no grip, yet the car stops shorter. Why the gap between what a robot may do and what it does is not the price of safety."
 date: 2026-09-15
 draft: false
 order: 3
