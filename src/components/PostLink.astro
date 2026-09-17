@@ -1,12 +1,11 @@
 ---
 /**
  * A fixed cross-reference from a page section to one Insights post: the
- * post's title followed by an arrow, with its reading time underneath.
- * The homepage uses one in each section. Pass the post; the caller decides
- * which post a section points at and handles a missing one.
+ * post's title followed by an arrow. The homepage uses one in each section.
+ * Pass the post; the caller decides which post a section points at and
+ * handles a missing one.
  */
 import type { InsightPost } from '../lib/insights.ts';
-import { readingTime } from '../lib/insights.ts';
 
 interface Props {
   post: InsightPost;
@@ -16,5 +15,4 @@ const { post } = Astro.props;
 
 <p>
   <a href={`/insights/${post.id}/`} class="text-accent font-semibold hover:text-link">{post.data.title}&nbsp;&rarr;</a>
-  <span class="block mt-2 text-meta">{readingTime(post.body)}</span>
 </p>
