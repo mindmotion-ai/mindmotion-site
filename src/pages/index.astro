@@ -4,21 +4,36 @@ import Nav from '../components/Nav.astro';
 import Hero from '../components/Hero.astro';
 import Section from '../components/Section.astro';
 import Footer from '../components/Footer.astro';
+import PostLink from '../components/PostLink.astro';
 import { INSIGHTS_ENABLED, SITE } from '../config.ts';
-import { getInsightPosts, readingTime } from '../lib/insights.ts';
+import { getInsightPosts } from '../lib/insights.ts';
 
-// Insights post linked below "Why now", by file name. The link shows the
-// post's title and reading time, and is left out while Insights is
-// switched off.
-const WHY_NOW_POST = 'robotics-is-where-aviation-was-in-1988';
-const whyNowPost = INSIGHTS_ENABLED
-  ? (await getInsightPosts()).find((post) => post.id === WHY_NOW_POST)
-  : undefined;
-if (INSIGHTS_ENABLED && !whyNowPost) {
-  throw new Error(
-    `The homepage links to the Insights post "${WHY_NOW_POST}", but no published post has that file name.`,
-  );
-}
+// The Insights post each homepage section links to, by file name. Every
+// link shows the post's title and reading time, and all four are left out
+// while Insights is switched off. Renaming, removing, or drafting one of
+// these posts stops the build with a message naming it.
+const SECTION_POSTS = {
+  problem: 'more-capable-less-predictable',
+  whatWeDo: 'measures-records-bounds',
+  howItWorks: 'safety-that-does-not-cost-throughput',
+  whyNow: 'robotics-is-where-aviation-was-in-1988',
+} as const;
+
+const posts = INSIGHTS_ENABLED ? await getInsightPosts() : [];
+const sectionPost = (id: string) => {
+  const post = posts.find((candidate) => candidate.id === id);
+  if (INSIGHTS_ENABLED && !post) {
+    throw new Error(
+      `The homepage links to the Insights post "${id}", but no published post has that file name.`,
+    );
+  }
+  return post;
+};
+
+const problemPost = sectionPost(SECTION_POSTS.problem);
+const whatWeDoPost = sectionPost(SECTION_POSTS.whatWeDo);
+const howItWorksPost = sectionPost(SECTION_POSTS.howItWorks);
+const whyNowPost = sectionPost(SECTION_POSTS.whyNow);
 ---
 
 <Base title={SITE.title} description={SITE.description}>
@@ -40,6 +55,7 @@ if (INSIGHTS_ENABLED && !whyNowPost) {
         people slows. If the way to contain that risk is to slow the robot
         down, safety costs throughput every second the robot moves.
       </p>
+      {problemPost && <PostLink post={problemPost} />}
     </Section>
 
     <Section id="what-we-do" heading="What we do" class="!pb-8 md:!pb-12">
@@ -50,6 +66,7 @@ if (INSIGHTS_ENABLED && !whyNowPost) {
         measures, records, and bounds what the robot does, regardless of
         what the AI decides or how it evolves.
       </p>
+      {whatWeDoPost && <PostLink post={whatWeDoPost} />}
       <div class="page-bleed mt-6 md:mt-8 mb-0">
         <picture>
           <!-- 4:5 portrait, brand-accent strokes on transparent bg, for phones. -->
@@ -86,6 +103,7 @@ if (INSIGHTS_ENABLED && !whyNowPost) {
         brakes do not prevent the collision; they keep the driver in control
         to avoid it.
       </p>
+      {howItWorksPost && <PostLink post={howItWorksPost} />}
     </Section>
 
     <Section id="why-now" heading="Why now">
@@ -95,12 +113,7 @@ if (INSIGHTS_ENABLED && !whyNowPost) {
         reason was the same: the safety claim could no longer rest on the
         system making the decisions. Robotics is at the same moment.
       </p>
-      {whyNowPost && (
-        <p>
-          <a href={`/insights/${whyNowPost.id}/`} class="text-accent font-semibold hover:text-link">{whyNowPost.data.title}&nbsp;&rarr;</a>
-          <span class="block mt-2 text-meta">{readingTime(whyNowPost.body)}</span>
-        </p>
-      )}
+      {whyNowPost && <PostLink post={whyNowPost} />}
     </Section>
   </main>
   <Footer />
