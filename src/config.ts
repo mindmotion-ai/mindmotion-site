@@ -15,11 +15,12 @@ export const SITE = {
   description:
     'Software for safe robot deployment around people. MindMotion builds runtime safety software that keeps AI in control.',
   // Homepage hero headline, written as phrases. Each phrase starts on its
-  // own line at every screen width.
-  tagline: ['Safe robot deployment', 'around people'],
+  // own line at every screen width. The non-breaking space keeps "does not"
+  // together where the first phrase wraps on narrow screens.
+  tagline: ['Safety that does\u00A0not', 'cost throughput'],
   // Homepage hero second line, written as phrases. Phrases may wrap onto
   // separate lines on narrow screens, but a phrase is never split.
-  taglineSecondary: ['Runtime safety software', 'for AI-driven robots'],
+  taglineSecondary: ['Runtime safety software', 'for AI-driven robots', 'working around people'],
   // Mission statement, shown at the top of /mission and at the start of
   // that page's meta description.
   mission: 'Make robots safe to deploy around people',
